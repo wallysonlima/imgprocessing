@@ -56,7 +56,7 @@ public class PgmImage extends Component {
         }
         
         //Image To Darken I
-        public void convertToDarkenI(int valor) throws IOException {
+        public void convertToDarkenI(int value) throws IOException {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-07-03/darkenImageI.pgm");
             
             ps.println("P2");
@@ -65,8 +65,8 @@ public class PgmImage extends Component {
             
             for( int r = 0; r < rows; r++ )
                 for ( int c = 0; c < cols; c++ )
-                    if ( (pixels[r][c] - valor) > 0 )
-                        ps.print(String.valueOf(pixels[r][c] - valor)  + " ");    
+                    if ( (pixels[r][c] - value) > 0 )
+                        ps.print(String.valueOf(pixels[r][c] - value)  + " ");    
                     else
                         ps.print(String.valueOf(0)  + " ");
             
@@ -183,25 +183,7 @@ public class PgmImage extends Component {
             ps.println("P2");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
-            
-            /*for( int x = 0; x < rows / 2; x++ )
-                for ( int y = x; y < rows - x - 1; y++ ) {
-                    // store current cell in temp variable
-                    int temp = pixels[x][y];
-                    
-                    // move values from rigth to top
-                    pixels[x][y] = pixels[y][rows - 1 - x];
-                    
-                    // move values from bottom to right
-                    pixels[y][rows-1-x] = pixels[rows-1-x][rows-1-y];
-                    
-                    // move values from left to bottom
-                    pixels[rows-1-x][rows-1-y] = pixels[rows-1-y][x];
-                    
-                    // assign temp to left
-                    pixels[rows-1-y][x] = temp;
-                }
-            */
+           
             getTranspose(pixels);
             rotateAlongMidRow(pixels);
             
@@ -214,8 +196,6 @@ public class PgmImage extends Component {
         
         // Rotate image horizontal (180º)
         public void rotateHorizontal()  throws IOException {
-            int[][] aux = new int[rows][cols];
-            int max = cols / 2;
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-07-03/rotateHorizontal.pgm");
             
             ps.println("P2");
@@ -231,7 +211,59 @@ public class PgmImage extends Component {
                     ps.print(String.valueOf(pixels[r][c]) + " ");
             
             ps.close();
-        }   
+        }
+        
+        // Rotate image vertical (180º)
+        public void rotateVertical()  throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-07-03/rotateVertical.pgm");
+            
+            ps.println("P2");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
+            getTranspose(pixels);
+            getTranspose(pixels);
+            rotateAlongMidRow(pixels);
+            
+            for( int r = 0; r < rows; r++ )
+                for ( int c = 0; c < cols; c++ )
+                    ps.print(String.valueOf(pixels[r][c]) + " ");
+            
+            ps.close();
+        }
+        
+        // Binarization the image
+        public void binarization(int value) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-14-03/binarization.pgm");
+            
+            ps.println("P2");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
+            for( int r = 0; r < rows; r++ )
+                for ( int c = 0; c < cols; c++ )
+                    if ( pixels[r][c] >= value )
+                        ps.print("255 ");
+                    else
+                        ps.print("0 ");
+            
+            ps.close();
+        }
+        
+        // Reduction the image of 16, 8, 4, 2
+        public void reduction(int value) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-14-03/reduction" + value + ".pgm");
+            
+            ps.println("P2");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
+            for( int r = 0; r < rows; r++ )
+                for ( int c = 0; c < cols; c++ )
+                   ps.print(String.valueOf(pixels[r][c] % value) + " ");
+            
+            ps.close();
+        }
         
 	// default constructor with a 3 by 4 image
 	public PgmImage(){

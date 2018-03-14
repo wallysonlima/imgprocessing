@@ -45,6 +45,12 @@ public class IUMain extends javax.swing.JFrame {
         menuItemRight.setEnabled(false);
         menuItemLeft.setEnabled(false);
         menuItemHorizontal.setEnabled(false);
+        menuItemVertical.setEnabled(false);
+        menuItembinary.setEnabled(false);
+        _16.setEnabled(false);
+        _8.setEnabled(false);
+        _4.setEnabled(false);
+        _2.setEnabled(false);
     }
     
     // Enable item menu
@@ -57,6 +63,12 @@ public class IUMain extends javax.swing.JFrame {
         menuItemRight.setEnabled(true);
         menuItemLeft.setEnabled(true);
         menuItemHorizontal.setEnabled(true);
+        menuItemVertical.setEnabled(true);
+        menuItembinary.setEnabled(true);
+        _16.setEnabled(true);
+        _8.setEnabled(true);
+        _4.setEnabled(true);
+        _2.setEnabled(true);
     }
 
     /**
@@ -82,6 +94,14 @@ public class IUMain extends javax.swing.JFrame {
         menuItemRight = new javax.swing.JMenuItem();
         menuItemLeft = new javax.swing.JMenuItem();
         menuItemHorizontal = new javax.swing.JMenuItem();
+        menuItemVertical = new javax.swing.JMenuItem();
+        menuBinary = new javax.swing.JMenu();
+        menuItembinary = new javax.swing.JMenuItem();
+        menuReduction = new javax.swing.JMenu();
+        _16 = new javax.swing.JMenuItem();
+        _8 = new javax.swing.JMenuItem();
+        _4 = new javax.swing.JMenuItem();
+        _2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -171,7 +191,68 @@ public class IUMain extends javax.swing.JFrame {
         });
         menuRotate.add(menuItemHorizontal);
 
+        menuItemVertical.setText("vertical (180º)");
+        menuItemVertical.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemVerticalActionPerformed(evt);
+            }
+        });
+        menuRotate.add(menuItemVertical);
+
         jMenuBar1.add(menuRotate);
+
+        menuBinary.setText("to Binary");
+        menuBinary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBinaryActionPerformed(evt);
+            }
+        });
+
+        menuItembinary.setText("binarization");
+        menuItembinary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItembinaryActionPerformed(evt);
+            }
+        });
+        menuBinary.add(menuItembinary);
+
+        jMenuBar1.add(menuBinary);
+
+        menuReduction.setText("Reduction");
+
+        _16.setText("16");
+        _16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _16ActionPerformed(evt);
+            }
+        });
+        menuReduction.add(_16);
+
+        _8.setText("8");
+        _8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _8ActionPerformed(evt);
+            }
+        });
+        menuReduction.add(_8);
+
+        _4.setText("4");
+        _4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _4ActionPerformed(evt);
+            }
+        });
+        menuReduction.add(_4);
+
+        _2.setText("2");
+        _2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _2ActionPerformed(evt);
+            }
+        });
+        menuReduction.add(_2);
+
+        jMenuBar1.add(menuReduction);
 
         setJMenuBar(jMenuBar1);
 
@@ -205,11 +286,13 @@ public class IUMain extends javax.swing.JFrame {
                     filename);
             
             menuEnable();
+            img = new PgmImage(filename);
+            JOptionPane.showMessageDialog(null, "Imagem Aberta com Sucesso !\n");
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao abrir a imagem !\n");
         }
         
-        img = new PgmImage(filename);
-        
-        JOptionPane.showMessageDialog(null, "Imagem Aberta com Sucesso !\n");
+       
     }//GEN-LAST:event_menuOpenActionPerformed
 
     private void menuNegativeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNegativeActionPerformed
@@ -288,6 +371,69 @@ public class IUMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuItemHorizontalActionPerformed
 
+    private void menuBinaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBinaryActionPerformed
+        
+    }//GEN-LAST:event_menuBinaryActionPerformed
+    
+    // Reduction to 16 bits
+    private void _16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__16ActionPerformed
+        try {
+            img.reduction(16);
+            JOptionPane.showMessageDialog(null, "A imagem foi reduzida (16 bits) com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event__16ActionPerformed
+
+    // Reduction to 8 bits
+    private void _8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__8ActionPerformed
+       try {
+            img.reduction(8);
+            JOptionPane.showMessageDialog(null, "A imagem foi reduzida (8 bits) com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event__8ActionPerformed
+
+    // Reduction to 4 bits
+    private void _4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__4ActionPerformed
+        try {
+            img.reduction(4);
+            JOptionPane.showMessageDialog(null, "A imagem foi reduzida (4 bits) com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event__4ActionPerformed
+
+    // Reduction to 2 bits
+    private void _2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__2ActionPerformed
+        try {
+            img.reduction(2);
+            JOptionPane.showMessageDialog(null, "A imagem foi reduzida (2 bits) com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event__2ActionPerformed
+
+    private void menuItembinaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItembinaryActionPerformed
+        try {
+            int value = Integer.parseInt(JOptionPane.showInputDialog("Digite um valor para realizar a binarização !\n"));
+            img.binarization(value);
+            JOptionPane.showMessageDialog(null, "A imagem foi binarizada com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItembinaryActionPerformed
+
+    private void menuItemVerticalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVerticalActionPerformed
+        try {
+            img.rotateVertical();
+            JOptionPane.showMessageDialog(null, "A imagem foi rotacionada para vertical com sucesso (180º) !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemVerticalActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -324,9 +470,14 @@ public class IUMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem _16;
+    private javax.swing.JMenuItem _2;
+    private javax.swing.JMenuItem _4;
+    private javax.swing.JMenuItem _8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu menuBinary;
     private javax.swing.JMenuItem menuDarkenI;
     private javax.swing.JMenuItem menuDarkenII;
     private javax.swing.JMenuItem menuItemAdd;
@@ -334,9 +485,12 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemLeft;
     private javax.swing.JMenuItem menuItemMult;
     private javax.swing.JMenuItem menuItemRight;
+    private javax.swing.JMenuItem menuItemVertical;
+    private javax.swing.JMenuItem menuItembinary;
     private javax.swing.JMenu menuLighten;
     private javax.swing.JMenuItem menuNegative;
     private javax.swing.JMenuItem menuOpen;
+    private javax.swing.JMenu menuReduction;
     private javax.swing.JMenu menuRotate;
     // End of variables declaration//GEN-END:variables
 }
