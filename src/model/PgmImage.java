@@ -134,19 +134,6 @@ public class PgmImage extends Component {
             
             return trans_arr;
         }
-
-        /*
-        private void rotateAlongMidRow(int[][] matrix) {
-            int len = matrix.length ;
-            for(int i = 0; i < rows/2; i++){
-                for(int j = 0;j < cols; j++){
-                    int temp = matrix[i][j];
-                    matrix[i][j] = matrix[len-1 -i][j];
-                    matrix[len -1 -i][j] = temp;
-                }
-            }
-        }
-        */
         
         private int[][] horizontalFlip(int[][] matrix)
         {
@@ -160,17 +147,6 @@ public class PgmImage extends Component {
             
             return matrix;
         }
-        
-        /*private void rotateAlongDiagonal(int[][] matrix) {
-            int len = matrix.length;
-            for(int i = 0; i < rows; i++){
-                for(int j = 0; j < rows - 1 - i ; j++){
-                    int temp = matrix[i][j];
-                    matrix[i][j] = matrix[len -1 - j][len-1-i];
-                    matrix[len -1 - j][len-1-i] = temp;
-                }
-            }
-        }*/
         
         public int[][] verticalFlip(int[][] matrix) {
             for(int i = 0; i < (matrix.length / 2); i++) {
