@@ -125,52 +125,77 @@ public class PgmImage extends Component {
             ps.close();
         }
         
-        private static void getTranspose(int[][] matrix) {
-            for(int i = 0; i < matrix.length; i++){
-                for(int j = i+1; j < matrix.length ; j++){
-                    int temp = matrix[i][j];
-                    matrix[i][j] = matrix[j][i];
-                    matrix[j][i] = temp;
-                }
-            }
+        // Transpose matrix
+        private int[][] getTranspose(int[][] matrix) {
+            int[][] trans_arr = new int[cols][rows];
+            for (int i = 0; i < rows; i++)
+                for (int j = 0; j < cols; j++)
+                    trans_arr[j][i] = matrix[i][j];
+            
+            return trans_arr;
         }
 
-        private static void rotateAlongMidRow(int[][] matrix) {
+        /*
+        private void rotateAlongMidRow(int[][] matrix) {
             int len = matrix.length ;
-            for(int i = 0; i < len/2; i++){
-                for(int j = 0;j < len; j++){
+            for(int i = 0; i < rows/2; i++){
+                for(int j = 0;j < cols; j++){
                     int temp = matrix[i][j];
                     matrix[i][j] = matrix[len-1 -i][j];
                     matrix[len -1 -i][j] = temp;
                 }
             }
         }
+        */
         
-        private static void rotateAlongDiagonal(int[][] matrix) {
+        private int[][] horizontalFlip(int[][] matrix)
+        {
+            int temp;
+            for (int i = 0; i < matrix.length; i++)
+                for (int j = 0; j < matrix[i].length/2; j++) {
+                    temp = matrix[i][j];
+                    matrix[i][j] = matrix[i][matrix[i].length - 1 - j];
+                    matrix[i][matrix[i].length - 1 - j] = temp;
+                }
+            
+            return matrix;
+        }
+        
+        /*private void rotateAlongDiagonal(int[][] matrix) {
             int len = matrix.length;
-            for(int i = 0; i < len; i++){
-                for(int j = 0; j < len - 1 - i ; j++){
+            for(int i = 0; i < rows; i++){
+                for(int j = 0; j < rows - 1 - i ; j++){
                     int temp = matrix[i][j];
                     matrix[i][j] = matrix[len -1 - j][len-1-i];
                     matrix[len -1 - j][len-1-i] = temp;
                 }
             }
+        }*/
+        
+        public int[][] verticalFlip(int[][] matrix) {
+            for(int i = 0; i < (matrix.length / 2); i++) {
+                int[] temp = matrix[i];
+                matrix[i] = matrix[matrix.length - i - 1];
+                matrix[matrix.length - i - 1] = temp;
+            }
+            
+            return matrix;
         }
         
          // Rotate image right (90º)
         public void rotateRight()  throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-07-03/rotateRight.pgm");
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-14-03/rotateRight.pgm");
+            
+            int[][] temp = getTranspose(pixels);
+            int[][] matrix = horizontalFlip(temp);
             
             ps.println("P2");
-            ps.println(cols + " " + rows);
+            ps.println(matrix[0].length + " " + matrix.length);
             ps.println(maxValue);
             
-            rotateAlongDiagonal(pixels);
-            rotateAlongMidRow(pixels);
-            
-            for( int r = 0; r < rows; r++ )
-                for ( int c = 0; c < cols; c++ )
-                    ps.print(String.valueOf(pixels[r][c]) + " "); 
+            for( int r = 0; r < matrix.length; r++ )
+                for ( int c = 0; c < matrix[0].length; c++ )
+                    ps.print(String.valueOf(matrix[r][c]) + " "); 
                 
             ps.close();
         }
@@ -178,56 +203,53 @@ public class PgmImage extends Component {
         // Rotate image left (-90º)
         public void rotateLeft()  throws IOException {
             int[][] aux = new int[rows][cols];
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-07-03/rotateLeft.pgm");
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-14-03/rotateLeft.pgm");
+            
+            int[][] temp = getTranspose(pixels);
+            int[][] matrix = verticalFlip(temp);
             
             ps.println("P2");
-            ps.println(cols + " " + rows);
+            ps.println(matrix[0].length + " " + matrix.length);
             ps.println(maxValue);
-           
-            getTranspose(pixels);
-            rotateAlongMidRow(pixels);
             
-            for( int r = 0; r < rows; r++ )
-                for ( int c = 0; c < cols; c++ )
-                    ps.print(String.valueOf(pixels[r][c]) + " "); 
+            for( int r = 0; r < matrix.length; r++ )
+                for ( int c = 0; c < matrix[0].length; c++ )
+                    ps.print(String.valueOf(matrix[r][c]) + " "); 
             
             ps.close();
         }
         
         // Rotate image horizontal (180º)
         public void rotateHorizontal()  throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-07-03/rotateHorizontal.pgm");
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-14-03/rotateHorizontal.pgm");
+            
+            int[][] matrix = horizontalFlip(pixels);
+            //int[][] matrix = verticalFlip(temp);
             
             ps.println("P2");
-            ps.println(cols + " " + rows);
+            ps.println(matrix[0].length + " " + matrix.length);
             ps.println(maxValue);
             
-            getTranspose(pixels);
-            rotateAlongDiagonal(pixels);
-            rotateAlongMidRow(pixels);
-            
-            for( int r = 0; r < rows; r++ )
-                for ( int c = 0; c < cols; c++ )
-                    ps.print(String.valueOf(pixels[r][c]) + " ");
+            for( int r = 0; r < matrix.length; r++ )
+                for ( int c = 0; c < matrix[0].length; c++ )
+                    ps.print(String.valueOf(matrix[r][c]) + " ");
             
             ps.close();
         }
         
         // Rotate image vertical (180º)
         public void rotateVertical()  throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-07-03/rotateVertical.pgm");
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-14-03/rotateVertical.pgm");
+            
+            int[][] matrix = verticalFlip(pixels);
             
             ps.println("P2");
-            ps.println(cols + " " + rows);
+            ps.println(matrix[0].length + " " + matrix.length);
             ps.println(maxValue);
             
-            getTranspose(pixels);
-            getTranspose(pixels);
-            rotateAlongMidRow(pixels);
-            
-            for( int r = 0; r < rows; r++ )
-                for ( int c = 0; c < cols; c++ )
-                    ps.print(String.valueOf(pixels[r][c]) + " ");
+            for( int r = 0; r < matrix.length; r++ )
+                for ( int c = 0; c < matrix[0].length; c++ )
+                    ps.print(String.valueOf(matrix[r][c]) + " ");
             
             ps.close();
         }
