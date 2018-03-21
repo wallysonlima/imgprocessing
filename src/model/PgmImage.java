@@ -265,7 +265,7 @@ public class PgmImage extends Component {
         
         // Highlights transformation range A and B and reduces all other intensities to a lower level
         public void highlightsTransformation(int a, int b, int gLevel1, int gLevel2) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-21-03/highlight2.pgm");
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-21-03/highlight1.pgm");
             
             ps.println("P2");
             ps.println(cols + " " + rows);
@@ -283,7 +283,7 @@ public class PgmImage extends Component {
         
         // Highlights transformation up values between A and B 
         public void highlightsTransformation2(int a, int b, int greyLevel) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-21-03/highlight1.pgm");
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-21-03/highlight2.pgm");
             
             ps.println("P2");
             ps.println(cols + " " + rows);
@@ -298,6 +298,30 @@ public class PgmImage extends Component {
                    
             ps.close();
         } 
+        
+        public void subtraction(int a, int b, int greyLevel) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-21-03/subtraction.pgm");
+            int[][] matrix = new int[rows][cols];
+            
+            ps.println("P2");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
+            for( int r = 0; r < rows; r++ )
+                for ( int c = 0; c < cols; c++ )
+                    if ( pixels[r][c] >= a && pixels[r][c] <= b )
+                        matrix[r][c] = greyLevel;
+                    else
+                        matrix[r][c] = pixels[r][c];
+            
+            for( int r = 0; r < rows; r++ )
+                for ( int c = 0; c < cols; c++ ) {
+                    int value = pixels[r][c] - matrix[r][c];
+                    ps.print(String.valueOf(value) + " ");
+                }
+            
+            ps.close();
+        }
         
 	// default constructor with a 3 by 4 image
 	public PgmImage(){

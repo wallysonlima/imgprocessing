@@ -49,6 +49,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItembinary.setEnabled(false);
         menuItemHighLight1.setEnabled(false);
         menuItemHighLight2.setEnabled(false);
+        menuItemSub.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -69,6 +70,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItembinary.setEnabled(true);
         menuItemHighLight1.setEnabled(true);
         menuItemHighLight2.setEnabled(true);
+        menuItemSub.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -109,6 +111,8 @@ public class IUMain extends javax.swing.JFrame {
         menuHighlight = new javax.swing.JMenu();
         menuItemHighLight1 = new javax.swing.JMenuItem();
         menuItemHighLight2 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        menuItemSub = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -281,13 +285,25 @@ public class IUMain extends javax.swing.JFrame {
 
         jMenuBar1.add(menuHighlight);
 
+        jMenu3.setText("to Subtract");
+
+        menuItemSub.setText("Subtraction");
+        menuItemSub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSubActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemSub);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGap(0, 584, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,6 +501,18 @@ public class IUMain extends javax.swing.JFrame {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuItemHighLight2ActionPerformed
+
+    private void menuItemSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSubActionPerformed
+         try {
+            int a = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor inicial do intervalo !\n"));
+            int b = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor final do intervalo !\n"));
+            int greyLevel = Integer.parseInt(JOptionPane.showInputDialog("Digite o nível de cinza !\n"));
+            img.subtraction(a, b, greyLevel);
+            JOptionPane.showMessageDialog(null, "A imagem foi subtraída com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemSubActionPerformed
     
     /**
      * @param args the command line arguments
@@ -528,6 +556,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem _8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuBinary;
     private javax.swing.JMenuItem menuDarkenI;
@@ -540,6 +569,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemLeft;
     private javax.swing.JMenuItem menuItemMult;
     private javax.swing.JMenuItem menuItemRight;
+    private javax.swing.JMenuItem menuItemSub;
     private javax.swing.JMenuItem menuItemVertical;
     private javax.swing.JMenuItem menuItembinary;
     private javax.swing.JMenu menuLighten;
