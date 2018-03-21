@@ -47,8 +47,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItemHorizontal.setEnabled(false);
         menuItemVertical.setEnabled(false);
         menuItembinary.setEnabled(false);
-        menuItemHighlight1.setEnabled(false);
-        menuItemHighlight2.setEnabled(false);
+        menuItemHighLight1.setEnabled(false);
+        menuItemHighLight2.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -67,8 +67,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItemHorizontal.setEnabled(true);
         menuItemVertical.setEnabled(true);
         menuItembinary.setEnabled(true);
-        menuItemHighlight1.setEnabled(true);
-        menuItemHighlight2.setEnabled(true);
+        menuItemHighLight1.setEnabled(true);
+        menuItemHighLight2.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -106,9 +106,9 @@ public class IUMain extends javax.swing.JFrame {
         _8 = new javax.swing.JMenuItem();
         _4 = new javax.swing.JMenuItem();
         _2 = new javax.swing.JMenuItem();
-        menuItemHighlight2 = new javax.swing.JMenu();
-        menuItemHighlight1 = new javax.swing.JMenuItem();
-        menuHighLight2 = new javax.swing.JMenuItem();
+        menuHighlight = new javax.swing.JMenu();
+        menuItemHighLight1 = new javax.swing.JMenuItem();
+        menuItemHighLight2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -261,25 +261,25 @@ public class IUMain extends javax.swing.JFrame {
 
         jMenuBar1.add(menuReduction);
 
-        menuItemHighlight2.setText("Highlight");
+        menuHighlight.setText("Highlight");
 
-        menuItemHighlight1.setText("option 1");
-        menuItemHighlight1.addActionListener(new java.awt.event.ActionListener() {
+        menuItemHighLight1.setText("option 1");
+        menuItemHighLight1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemHighlight1ActionPerformed(evt);
+                menuItemHighLight1ActionPerformed(evt);
             }
         });
-        menuItemHighlight2.add(menuItemHighlight1);
+        menuHighlight.add(menuItemHighLight1);
 
-        menuHighLight2.setText("option 2");
-        menuHighLight2.addActionListener(new java.awt.event.ActionListener() {
+        menuItemHighLight2.setText("option 2");
+        menuItemHighLight2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuHighLight2ActionPerformed(evt);
+                menuItemHighLight2ActionPerformed(evt);
             }
         });
-        menuItemHighlight2.add(menuHighLight2);
+        menuHighlight.add(menuItemHighLight2);
 
-        jMenuBar1.add(menuItemHighlight2);
+        jMenuBar1.add(menuHighlight);
 
         setJMenuBar(jMenuBar1);
 
@@ -461,19 +461,20 @@ public class IUMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuItemVerticalActionPerformed
 
-    private void menuItemHighlight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemHighlight1ActionPerformed
+    private void menuItemHighLight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemHighLight1ActionPerformed
         try {
             int a = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor inicial do intervalo !\n"));
             int b = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor final do intervalo !\n"));
-            int greyLevel = Integer.parseInt(JOptionPane.showInputDialog("Digite o nível de cinza !\n"));
-            img.highlightsTransformation(a, b, greyLevel);
+            int glevel1 = Integer.parseInt(JOptionPane.showInputDialog("Digite o primeiro nível de cinza !\n"));
+            int glevel2 = Integer.parseInt(JOptionPane.showInputDialog("Digite o segundo nível de cinza !\n"));
+            img.highlightsTransformation(a, b, glevel1, glevel2);
             JOptionPane.showMessageDialog(null, "A imagem foi Realçada com sucesso !\n");
         } catch (IOException ex) {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_menuItemHighlight1ActionPerformed
+    }//GEN-LAST:event_menuItemHighLight1ActionPerformed
 
-    private void menuHighLight2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuHighLight2ActionPerformed
+    private void menuItemHighLight2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemHighLight2ActionPerformed
         try {
             int a = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor inicial do intervalo !\n"));
             int b = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor final do intervalo !\n"));
@@ -483,7 +484,7 @@ public class IUMain extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_menuHighLight2ActionPerformed
+    }//GEN-LAST:event_menuItemHighLight2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -531,10 +532,10 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenu menuBinary;
     private javax.swing.JMenuItem menuDarkenI;
     private javax.swing.JMenuItem menuDarkenII;
-    private javax.swing.JMenuItem menuHighLight2;
+    private javax.swing.JMenu menuHighlight;
     private javax.swing.JMenuItem menuItemAdd;
-    private javax.swing.JMenuItem menuItemHighlight1;
-    private javax.swing.JMenu menuItemHighlight2;
+    private javax.swing.JMenuItem menuItemHighLight1;
+    private javax.swing.JMenuItem menuItemHighLight2;
     private javax.swing.JMenuItem menuItemHorizontal;
     private javax.swing.JMenuItem menuItemLeft;
     private javax.swing.JMenuItem menuItemMult;

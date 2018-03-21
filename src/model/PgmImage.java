@@ -264,8 +264,8 @@ public class PgmImage extends Component {
         }
         
         // Highlights transformation range A and B and reduces all other intensities to a lower level
-        public void highlightsTransformation(int a, int b, int greyLevel) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-14-03/highlight1.pgm");
+        public void highlightsTransformation(int a, int b, int gLevel1, int gLevel2) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-21-03/highlight2.pgm");
             
             ps.println("P2");
             ps.println(cols + " " + rows);
@@ -273,15 +273,17 @@ public class PgmImage extends Component {
             
             for( int r = 0; r < rows; r++ )
                 for ( int c = 0; c < cols; c++ )
-                    if ( pixels[r][c] < a && pixels[r][c] > b )
-                        ps.print(String.valueOf( greyLevel ) + " ");
+                    if ( pixels[r][c] < a || pixels[r][c] > b )
+                        ps.print(String.valueOf( gLevel1 ) + " ");
+                    else
+                        ps.print(String.valueOf( gLevel2 ) + " ");
                    
             ps.close();
         }
         
         // Highlights transformation up values between A and B 
         public void highlightsTransformation2(int a, int b, int greyLevel) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-14-03/highlight2.pgm");
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-21-03/highlight1.pgm");
             
             ps.println("P2");
             ps.println(cols + " " + rows);
@@ -291,9 +293,11 @@ public class PgmImage extends Component {
                 for ( int c = 0; c < cols; c++ )
                     if ( pixels[r][c] >= a && pixels[r][c] <= b )
                         ps.print(String.valueOf( greyLevel ) + " ");
+                    else
+                        ps.print(String.valueOf(pixels[r][c]) + " ");
                    
             ps.close();
-        }
+        } 
         
 	// default constructor with a 3 by 4 image
 	public PgmImage(){

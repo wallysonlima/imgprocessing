@@ -169,25 +169,25 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuItemHighlight2">
+        <Menu class="javax.swing.JMenu" name="menuHighlight">
           <Properties>
             <Property name="text" type="java.lang.String" value="Highlight"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemHighlight1">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemHighLight1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="option 1"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemHighlight1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemHighLight1ActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuHighLight2">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemHighLight2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="option 2"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuHighLight2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemHighLight2ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
