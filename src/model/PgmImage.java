@@ -299,8 +299,36 @@ public class PgmImage extends Component {
             ps.close();
         } 
         
-        public void subtraction(int a, int b, int greyLevel) throws IOException {
+        public void subtraction1(int a, int b, int glevel1, int glevel2) throws IOException {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-21-03/subtraction.pgm");
+            int[][] matrix = new int[rows][cols];
+            
+            ps.println("P2");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
+            for( int r = 0; r < rows; r++ )
+                for ( int c = 0; c < cols; c++ )
+                    if ( pixels[r][c] < a || pixels[r][c] > b )
+                        matrix[r][c] = glevel1;
+                    else
+                        matrix[r][c] = glevel2;
+            
+            for( int r = 0; r < rows; r++ )
+                for ( int c = 0; c < cols; c++ ) {
+                    int value = pixels[r][c] - matrix[r][c];
+                    
+                    if ( value > 0 )
+                        ps.print(String.valueOf(value) + " ");
+                    else
+                        ps.print("0 ");             
+                }
+                    
+            ps.close();
+        }
+        
+        public void subtraction2(int a, int b, int greyLevel) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-21-03/subtraction2.pgm");
             int[][] matrix = new int[rows][cols];
             
             ps.println("P2");

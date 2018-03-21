@@ -49,7 +49,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItembinary.setEnabled(false);
         menuItemHighLight1.setEnabled(false);
         menuItemHighLight2.setEnabled(false);
-        menuItemSub.setEnabled(false);
+        menuItemSub1.setEnabled(false);
+        menuItemSubtraction2.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -70,7 +71,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItembinary.setEnabled(true);
         menuItemHighLight1.setEnabled(true);
         menuItemHighLight2.setEnabled(true);
-        menuItemSub.setEnabled(true);
+        menuItemSub1.setEnabled(true);
+        menuItemSubtraction2.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -112,7 +114,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItemHighLight1 = new javax.swing.JMenuItem();
         menuItemHighLight2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        menuItemSub = new javax.swing.JMenuItem();
+        menuItemSub1 = new javax.swing.JMenuItem();
+        menuItemSubtraction2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -287,13 +290,21 @@ public class IUMain extends javax.swing.JFrame {
 
         jMenu3.setText("to Subtract");
 
-        menuItemSub.setText("Subtraction");
-        menuItemSub.addActionListener(new java.awt.event.ActionListener() {
+        menuItemSub1.setText("Subtraction 1");
+        menuItemSub1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemSubActionPerformed(evt);
+                menuItemSub1ActionPerformed(evt);
             }
         });
-        jMenu3.add(menuItemSub);
+        jMenu3.add(menuItemSub1);
+
+        menuItemSubtraction2.setText("Subtraction 2");
+        menuItemSubtraction2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSubtraction2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemSubtraction2);
 
         jMenuBar1.add(jMenu3);
 
@@ -502,17 +513,30 @@ public class IUMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuItemHighLight2ActionPerformed
 
-    private void menuItemSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSubActionPerformed
+    private void menuItemSub1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSub1ActionPerformed
          try {
             int a = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor inicial do intervalo !\n"));
             int b = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor final do intervalo !\n"));
-            int greyLevel = Integer.parseInt(JOptionPane.showInputDialog("Digite o nível de cinza !\n"));
-            img.subtraction(a, b, greyLevel);
+            int glevel1 = Integer.parseInt(JOptionPane.showInputDialog("Digite o primeiro nível de cinza !\n"));
+            int glevel2 = Integer.parseInt(JOptionPane.showInputDialog("Digite o segundo nível de cinza !\n"));
+            img.subtraction1(a, b, glevel1, glevel2);
             JOptionPane.showMessageDialog(null, "A imagem foi subtraída com sucesso !\n");
         } catch (IOException ex) {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_menuItemSubActionPerformed
+    }//GEN-LAST:event_menuItemSub1ActionPerformed
+
+    private void menuItemSubtraction2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSubtraction2ActionPerformed
+       try {
+            int a = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor inicial do intervalo !\n"));
+            int b = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor final do intervalo !\n"));
+            int greyLevel = Integer.parseInt(JOptionPane.showInputDialog("Digite o nível de cinza !\n"));
+            img.subtraction2(a, b, greyLevel);
+            JOptionPane.showMessageDialog(null, "A imagem foi subtraída com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemSubtraction2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -569,7 +593,8 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemLeft;
     private javax.swing.JMenuItem menuItemMult;
     private javax.swing.JMenuItem menuItemRight;
-    private javax.swing.JMenuItem menuItemSub;
+    private javax.swing.JMenuItem menuItemSub1;
+    private javax.swing.JMenuItem menuItemSubtraction2;
     private javax.swing.JMenuItem menuItemVertical;
     private javax.swing.JMenuItem menuItembinary;
     private javax.swing.JMenu menuLighten;

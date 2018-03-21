@@ -197,12 +197,20 @@
             <Property name="text" type="java.lang.String" value="to Subtract"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemSub">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemSub1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Subtraction"/>
+                <Property name="text" type="java.lang.String" value="Subtraction 1"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemSubActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemSub1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemSubtraction2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Subtraction 2"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemSubtraction2ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
