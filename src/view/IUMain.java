@@ -47,6 +47,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItemHorizontal.setEnabled(false);
         menuItemVertical.setEnabled(false);
         menuItembinary.setEnabled(false);
+        menuItemHighlight1.setEnabled(false);
+        menuItemHighlight2.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -65,6 +67,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItemHorizontal.setEnabled(true);
         menuItemVertical.setEnabled(true);
         menuItembinary.setEnabled(true);
+        menuItemHighlight1.setEnabled(true);
+        menuItemHighlight2.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -102,6 +106,9 @@ public class IUMain extends javax.swing.JFrame {
         _8 = new javax.swing.JMenuItem();
         _4 = new javax.swing.JMenuItem();
         _2 = new javax.swing.JMenuItem();
+        menuItemHighlight2 = new javax.swing.JMenu();
+        menuItemHighlight1 = new javax.swing.JMenuItem();
+        menuHighLight2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -254,13 +261,33 @@ public class IUMain extends javax.swing.JFrame {
 
         jMenuBar1.add(menuReduction);
 
+        menuItemHighlight2.setText("Highlight");
+
+        menuItemHighlight1.setText("option 1");
+        menuItemHighlight1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemHighlight1ActionPerformed(evt);
+            }
+        });
+        menuItemHighlight2.add(menuItemHighlight1);
+
+        menuHighLight2.setText("option 2");
+        menuHighLight2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuHighLight2ActionPerformed(evt);
+            }
+        });
+        menuItemHighlight2.add(menuHighLight2);
+
+        jMenuBar1.add(menuItemHighlight2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 506, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,6 +460,30 @@ public class IUMain extends javax.swing.JFrame {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuItemVerticalActionPerformed
+
+    private void menuItemHighlight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemHighlight1ActionPerformed
+        try {
+            int a = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor inicial do intervalo !\n"));
+            int b = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor final do intervalo !\n"));
+            int greyLevel = Integer.parseInt(JOptionPane.showInputDialog("Digite o nível de cinza !\n"));
+            img.highlightsTransformation(a, b, greyLevel);
+            JOptionPane.showMessageDialog(null, "A imagem foi Realçada com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemHighlight1ActionPerformed
+
+    private void menuHighLight2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuHighLight2ActionPerformed
+        try {
+            int a = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor inicial do intervalo !\n"));
+            int b = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor final do intervalo !\n"));
+            int greyLevel = Integer.parseInt(JOptionPane.showInputDialog("Digite o nível de cinza !\n"));
+            img.highlightsTransformation2(a, b, greyLevel);
+            JOptionPane.showMessageDialog(null, "A imagem foi Realçada com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuHighLight2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -480,7 +531,10 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenu menuBinary;
     private javax.swing.JMenuItem menuDarkenI;
     private javax.swing.JMenuItem menuDarkenII;
+    private javax.swing.JMenuItem menuHighLight2;
     private javax.swing.JMenuItem menuItemAdd;
+    private javax.swing.JMenuItem menuItemHighlight1;
+    private javax.swing.JMenu menuItemHighlight2;
     private javax.swing.JMenuItem menuItemHorizontal;
     private javax.swing.JMenuItem menuItemLeft;
     private javax.swing.JMenuItem menuItemMult;

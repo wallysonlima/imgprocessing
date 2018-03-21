@@ -263,6 +263,38 @@ public class PgmImage extends Component {
             ps.close();
         }
         
+        // Highlights transformation range A and B and reduces all other intensities to a lower level
+        public void highlightsTransformation(int a, int b, int greyLevel) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-14-03/highlight1.pgm");
+            
+            ps.println("P2");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
+            for( int r = 0; r < rows; r++ )
+                for ( int c = 0; c < cols; c++ )
+                    if ( pixels[r][c] < a && pixels[r][c] > b )
+                        ps.print(String.valueOf( greyLevel ) + " ");
+                   
+            ps.close();
+        }
+        
+        // Highlights transformation up values between A and B 
+        public void highlightsTransformation2(int a, int b, int greyLevel) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-14-03/highlight2.pgm");
+            
+            ps.println("P2");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
+            for( int r = 0; r < rows; r++ )
+                for ( int c = 0; c < cols; c++ )
+                    if ( pixels[r][c] >= a && pixels[r][c] <= b )
+                        ps.print(String.valueOf( greyLevel ) + " ");
+                   
+            ps.close();
+        }
+        
 	// default constructor with a 3 by 4 image
 	public PgmImage(){
 		int[][] defaultPixels = {{0, 1, 2, 3}, {4, 5, 6, 7},{8, 9, 10, 11}};
