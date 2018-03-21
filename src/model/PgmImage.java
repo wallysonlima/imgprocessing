@@ -317,9 +317,13 @@ public class PgmImage extends Component {
             for( int r = 0; r < rows; r++ )
                 for ( int c = 0; c < cols; c++ ) {
                     int value = pixels[r][c] - matrix[r][c];
-                    ps.print(String.valueOf(value) + " ");
+                    
+                    if ( value > 0 )
+                        ps.print(String.valueOf(value) + " ");
+                    else
+                        ps.print("0 ");             
                 }
-            
+                    
             ps.close();
         }
         
