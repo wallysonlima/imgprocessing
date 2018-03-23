@@ -52,6 +52,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemSub1.setEnabled(false);
         menuItemSubtraction2.setEnabled(false);
         MenuItemTransform.setEnabled(false);
+        menuItemZoom.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -75,6 +76,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemSub1.setEnabled(true);
         menuItemSubtraction2.setEnabled(true);
         MenuItemTransform.setEnabled(true);
+        menuItemZoom.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -120,6 +122,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItemSubtraction2 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         MenuItemTransform = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        menuItemZoom = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -324,17 +328,29 @@ public class IUMain extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setText("to Zoom");
+
+        menuItemZoom.setText("Zoom-In");
+        menuItemZoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemZoomActionPerformed(evt);
+            }
+        });
+        jMenu5.add(menuItemZoom);
+
+        jMenuBar1.add(jMenu5);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGap(0, 763, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
+            .addGap(0, 308, Short.MAX_VALUE)
         );
 
         pack();
@@ -563,6 +579,16 @@ public class IUMain extends javax.swing.JFrame {
              Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_MenuItemTransformActionPerformed
+
+    private void menuItemZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemZoomActionPerformed
+         try {
+             int n = Integer.parseInt(JOptionPane.showInputDialog("Digite qtde x que a imagem vai ser ampliada !\n"));
+             img.zoomIn(n);
+             JOptionPane.showMessageDialog(null, "A imagem foi ampliada com sucesso !\n");
+         } catch (IOException ex) {
+             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_menuItemZoomActionPerformed
     
     /**
      * @param args the command line arguments
@@ -609,6 +635,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuBinary;
     private javax.swing.JMenuItem menuDarkenI;
@@ -624,6 +651,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemSub1;
     private javax.swing.JMenuItem menuItemSubtraction2;
     private javax.swing.JMenuItem menuItemVertical;
+    private javax.swing.JMenuItem menuItemZoom;
     private javax.swing.JMenuItem menuItembinary;
     private javax.swing.JMenu menuLighten;
     private javax.swing.JMenuItem menuNegative;

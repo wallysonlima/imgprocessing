@@ -355,7 +355,7 @@ public class PgmImage extends Component {
             ps.close();
         }
         
-         //Image To Darken I
+         //Transform Image by Power
         public void transformPower(float power) throws IOException {
             int p = Math.round(power * 10);
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-23-03/transformPower" + p + ".pgm");
@@ -376,6 +376,45 @@ public class PgmImage extends Component {
                 }
             
             ps.close();
+        }
+        
+        // Zoom-in the image
+        public void zoomIn(int n) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-23-03/zoomIn" + n + ".pgm");
+            int w = n * img.getWidth();
+            int h = n * img.getHeight();
+
+            BufferedImage enlargedImage =
+                    new BufferedImage(w, h, img.getType());
+
+            for (int y=0; y < h; ++y)
+                for (int x=0; x < w; ++x)
+                    enlargedImage.setRGB(x, y, img.getRGB(x/n, y/n));
+            
+            ps.println("P2");
+            ps.println(w + " " + h);
+            ps.println(maxValue);
+            
+            for( int r = 0; r < w; r++ )
+                for ( int c = 0; c < h; c++ )
+                    ps.print(String.valueOf( enlargedImage.getRGB(r, c) ) + " ");
+                  
+            ps.close();
+        }
+        
+        
+        public BufferedImage enlarge(int n) {
+            int w = n * img.getWidth();
+            int h = n * img.getHeight();
+
+            BufferedImage enlargedImage =
+                    new BufferedImage(w, h, img.getType());
+
+            for (int y=0; y < h; ++y)
+                for (int x=0; x < w; ++x)
+                    enlargedImage.setRGB(x, y, img.getRGB(x/n, y/n));
+
+            return enlargedImage;
         }
         
 	// default constructor with a 3 by 4 image
