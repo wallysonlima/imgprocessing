@@ -51,6 +51,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemHighLight2.setEnabled(false);
         menuItemSub1.setEnabled(false);
         menuItemSubtraction2.setEnabled(false);
+        MenuItemTransform.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -73,6 +74,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemHighLight2.setEnabled(true);
         menuItemSub1.setEnabled(true);
         menuItemSubtraction2.setEnabled(true);
+        MenuItemTransform.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -116,6 +118,8 @@ public class IUMain extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         menuItemSub1 = new javax.swing.JMenuItem();
         menuItemSubtraction2 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        MenuItemTransform = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -308,13 +312,25 @@ public class IUMain extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setText("to Power");
+
+        MenuItemTransform.setText("transform ^ power");
+        MenuItemTransform.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemTransformActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MenuItemTransform);
+
+        jMenuBar1.add(jMenu4);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 584, Short.MAX_VALUE)
+            .addGap(0, 668, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -537,6 +553,16 @@ public class IUMain extends javax.swing.JFrame {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuItemSubtraction2ActionPerformed
+
+    private void MenuItemTransformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemTransformActionPerformed
+        try {
+             float power = Float.parseFloat(JOptionPane.showInputDialog("Digite o valor da potência interval entre (0, 1) !\n"));
+             img.transformPower(power);
+             JOptionPane.showMessageDialog(null, "A imagem foi transformada com sucesso !\n");
+         } catch (IOException ex) {
+             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_MenuItemTransformActionPerformed
     
     /**
      * @param args the command line arguments
@@ -574,6 +600,7 @@ public class IUMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuItemTransform;
     private javax.swing.JMenuItem _16;
     private javax.swing.JMenuItem _2;
     private javax.swing.JMenuItem _4;
@@ -581,6 +608,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuBinary;
     private javax.swing.JMenuItem menuDarkenI;

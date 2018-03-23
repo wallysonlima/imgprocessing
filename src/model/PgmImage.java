@@ -355,6 +355,29 @@ public class PgmImage extends Component {
             ps.close();
         }
         
+         //Image To Darken I
+        public void transformPower(float power) throws IOException {
+            int p = Math.round(power * 10);
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-23-03/transformPower" + p + ".pgm");
+            float temp = 0.0f;
+            int value = 0;
+            
+            ps.println("P2");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
+            for( int r = 0; r < rows; r++ )
+                for ( int c = 0; c < cols; c++ ) {
+                    temp = pixels[r][c] / (float)255;
+                    temp = (float) Math.pow(temp, power);
+                    value = (int)(temp * 255);
+                    
+                    ps.print(String.valueOf(value) + " ");
+                }
+            
+            ps.close();
+        }
+        
 	// default constructor with a 3 by 4 image
 	public PgmImage(){
 		int[][] defaultPixels = {{0, 1, 2, 3}, {4, 5, 6, 7},{8, 9, 10, 11}};
