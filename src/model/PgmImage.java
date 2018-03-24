@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -15,7 +16,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import view.IUMain;
 
 /**
  *
@@ -39,7 +44,7 @@ public class PgmImage extends Component {
 				img.setRGB(col, row, ((255<<24) | (g << 16) | (g <<8) | g));		
 			}
 	}
-        
+         
         //Convert To Negative
         public void convertToNegative() throws IOException {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-07-03/negativeImage.pgm");
@@ -389,32 +394,20 @@ public class PgmImage extends Component {
 
             for (int y=0; y < h; ++y)
                 for (int x=0; x < w; ++x)
-                    enlargedImage.setRGB(x, y, img.getRGB(x/n, y/n));
+                    enlargedImage.setRGB(x, y, img.getRGB(Math.round(x/n), Math.round(y/n)));
             
             ps.println("P2");
             ps.println(w + " " + h);
             ps.println(maxValue);
             
-            for( int r = 0; r < w; r++ )
-                for ( int c = 0; c < h; c++ )
-                    ps.print(String.valueOf( enlargedImage.getRGB(r, c) ) + " ");
-                  
+            try {
+                for( int r = 0; r < h; ++r )
+                    for ( int c = 0; c < w; ++c )
+                        ps.print(String.valueOf( enlargedImage.getRGB(c, r) ) + " ");
+            } catch(ArrayIndexOutOfBoundsException ex ) {
+                JOptionPane.showMessageDialog(null, "Erro excedeu o valor do Array !\n");
+            }
             ps.close();
-        }
-        
-        
-        public BufferedImage enlarge(int n) {
-            int w = n * img.getWidth();
-            int h = n * img.getHeight();
-
-            BufferedImage enlargedImage =
-                    new BufferedImage(w, h, img.getType());
-
-            for (int y=0; y < h; ++y)
-                for (int x=0; x < w; ++x)
-                    enlargedImage.setRGB(x, y, img.getRGB(x/n, y/n));
-
-            return enlargedImage;
         }
         
 	// default constructor with a 3 by 4 image
