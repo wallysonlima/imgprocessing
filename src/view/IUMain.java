@@ -53,6 +53,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemSubtraction2.setEnabled(false);
         MenuItemTransform.setEnabled(false);
         menuItemZoom.setEnabled(false);
+        menuItemZoomOut.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -77,6 +78,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemSubtraction2.setEnabled(true);
         MenuItemTransform.setEnabled(true);
         menuItemZoom.setEnabled(true);
+        menuItemZoomOut.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -124,6 +126,7 @@ public class IUMain extends javax.swing.JFrame {
         MenuItemTransform = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         menuItemZoom = new javax.swing.JMenuItem();
+        menuItemZoomOut = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -337,6 +340,14 @@ public class IUMain extends javax.swing.JFrame {
             }
         });
         jMenu5.add(menuItemZoom);
+
+        menuItemZoomOut.setText("Zoom-Out");
+        menuItemZoomOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemZoomOutActionPerformed(evt);
+            }
+        });
+        jMenu5.add(menuItemZoomOut);
 
         jMenuBar1.add(jMenu5);
 
@@ -589,6 +600,10 @@ public class IUMain extends javax.swing.JFrame {
              Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_menuItemZoomActionPerformed
+
+    private void menuItemZoomOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemZoomOutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemZoomOutActionPerformed
     
     /**
      * @param args the command line arguments
@@ -652,6 +667,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemSubtraction2;
     private javax.swing.JMenuItem menuItemVertical;
     private javax.swing.JMenuItem menuItemZoom;
+    private javax.swing.JMenuItem menuItemZoomOut;
     private javax.swing.JMenuItem menuItembinary;
     private javax.swing.JMenu menuLighten;
     private javax.swing.JMenuItem menuNegative;

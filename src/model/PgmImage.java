@@ -388,26 +388,17 @@ public class PgmImage extends Component {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-23-03/zoomIn" + n + ".pgm");
             int w = n * img.getWidth();
             int h = n * img.getHeight();
-
-            BufferedImage enlargedImage =
-                    new BufferedImage(w, h, img.getType());
-
-            for (int y=0; y < h; ++y)
-                for (int x=0; x < w; ++x)
-                    enlargedImage.setRGB(x, y, img.getRGB(Math.round(x/n), Math.round(y/n)));
             
             ps.println("P2");
             ps.println(w + " " + h);
             ps.println(maxValue);
             
-            try {
-                for( int r = 0; r < h; ++r )
-                    for ( int c = 0; c < w; ++c )
-                        ps.print(String.valueOf( enlargedImage.getRGB(c, r) ) + " ");
-            } catch(ArrayIndexOutOfBoundsException ex ) {
-                JOptionPane.showMessageDialog(null, "Erro excedeu o valor do Array !\n");
-            }
             ps.close();
+        }
+        
+        // Zoom-out the image
+        public void zoomOut(int n) throws IOException {
+            
         }
         
 	// default constructor with a 3 by 4 image
