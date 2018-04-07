@@ -388,10 +388,15 @@ public class PgmImage extends Component {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-23-03/zoomIn" + n + ".pgm");
             int w = n * img.getWidth();
             int h = n * img.getHeight();
+            int[][] matrix = new int[w][h];
             
             ps.println("P2");
             ps.println(w + " " + h);
             ps.println(maxValue);
+            
+            for( int i = 0; i < h; i++)
+                for( int j = 0; j < w; j++ )
+                    ps.print(String.valueOf(pixels[i/n][j/n]) + " ");
             
             ps.close();
         }
