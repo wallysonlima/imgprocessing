@@ -386,11 +386,12 @@ public class PgmImage extends Component {
         // Zoom-in the image
         public void zoomIn(int n) throws IOException {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-23-03/zoomIn" + n + ".pgm");
-            int w = n * img.getWidth();
             int h = n * img.getHeight();
-            int[][] matrix = new int[w][h];
+            int w = n * img.getWidth();
+            int[][] matrix = new int[h][w];
             
             ps.println("P2");
+             ps.println("#Zoom In Image");
             ps.println(w + " " + h);
             ps.println(maxValue);
             
@@ -403,7 +404,28 @@ public class PgmImage extends Component {
         
         // Zoom-out the image
         public void zoomOut(int n) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-23-03/zoomOut" + n + ".pgm");
+            int h = img.getHeight() / n;
+            int w = img.getWidth() / n;
+            int[][] matrix = new int[h][w];
             
+            ps.println("P2");
+            ps.println("#Zoom Out Image");
+            ps.println(w + " " + h);
+            ps.println(maxValue);
+            
+            
+            for( int i = 0; i < h; i += n )
+                for( int j = 0; j < w; j += n )
+                    for( int r = 0; r < h; r++)
+                        for( int c = 0; c < w; c++)
+                            matrix[i][j] = matrix[i+r][j+c];
+            
+            for( int i = 0; i < h; i++)
+                for( int j = 0; j < w; j++ )
+                    ps.print(String.valueOf(Math.round(matrix[i][j]/n)) + " ");
+                    
+            ps.close();
         }
         
 	// default constructor with a 3 by 4 image

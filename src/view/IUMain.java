@@ -602,7 +602,13 @@ public class IUMain extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemZoomActionPerformed
 
     private void menuItemZoomOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemZoomOutActionPerformed
-        // TODO add your handling code here:
+        try {
+             int n = Integer.parseInt(JOptionPane.showInputDialog("Digite qtde x que a imagem vai ser diminuída !\n"));
+             img.zoomOut(n);
+             JOptionPane.showMessageDialog(null, "A imagem foi diminuída com sucesso !\n");
+         } catch (IOException ex) {
+             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }//GEN-LAST:event_menuItemZoomOutActionPerformed
     
     /**
