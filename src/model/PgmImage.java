@@ -405,8 +405,9 @@ public class PgmImage extends Component {
         // Zoom-out the image
         public void zoomOut(int n) throws IOException {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-23-03/zoomOut" + n + ".pgm");
-            int h = img.getHeight() / n;
-            int w = img.getWidth() / n;
+            int h = pixels.length / n;
+            int w = pixels[0].length / n;
+            int size = pixels.length * n;
             int[][] matrix = new int[h][w];
             
             ps.println("P2");
@@ -415,15 +416,18 @@ public class PgmImage extends Component {
             ps.println(maxValue);
             
             
-            for( int i = 0; i < h; i += n )
-                for( int j = 0; j < w; j += n )
-                    for( int r = 0; r < h; r++)
-                        for( int c = 0; c < w; c++)
-                            matrix[i][j] = matrix[i+r][j+c];
+            for( int i = 0; i < pixels.length; i++ )
+                for( int j = 0; j < pixels[0].length; j++ ) {
+                    matrix[i/n][j/n] = 0;
+                        
+                    for( int r = i; r < h; r++)
+                        for( int c = j; c < w; c++)
+                            matrix[i/n][j/n] += pixels[r][c];
+                }  
             
             for( int i = 0; i < h; i++)
                 for( int j = 0; j < w; j++ )
-                    ps.print(String.valueOf(Math.round(matrix[i][j]/n)) + " ");
+                    ps.print(String.valueOf(Math.round(matrix[i][j]/size)) + " ");
                     
             ps.close();
         }
