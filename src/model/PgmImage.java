@@ -414,20 +414,18 @@ public class PgmImage extends Component {
             ps.println("#Zoom Out Image");
             ps.println(w + " " + h);
             ps.println(maxValue);
-            
-            
-            for( int i = 0; i < pixels.length; i++ )
-                for( int j = 0; j < pixels[0].length; j++ ) {
-                    matrix[i/n][j/n] = 0;
-                        
-                    for( int r = i; r < h; r++)
-                        for( int c = j; c < w; c++)
-                            matrix[i/n][j/n] += pixels[r][c];
-                }  
+            int l, c;
+                      
+            for( int i = 0; i < h; i++ )
+                for( int j = 0; j < w; j++ ) {
+                    l = i * n;
+                    c = j * n;
+                    matrix[i][j] = Math.round((pixels[l][c] + pixels[l+1][c] + pixels[l][c+1] + pixels[l+1][c+1]) / 4);    
+            }  
             
             for( int i = 0; i < h; i++)
                 for( int j = 0; j < w; j++ )
-                    ps.print(String.valueOf(Math.round(matrix[i][j]/size)) + " ");
+                    ps.print(String.valueOf(Math.round(matrix[i][j])) + " ");
                     
             ps.close();
         }
