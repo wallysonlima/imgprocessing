@@ -483,6 +483,10 @@ public class PgmImage extends Component {
              ps.close();
         }
         
+        public void statisticalEqualization() throws IOException {
+            
+        }
+        
         
 	// default constructor with a 3 by 4 image
 	public PgmImage(){

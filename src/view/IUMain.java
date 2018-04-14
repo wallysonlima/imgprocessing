@@ -56,6 +56,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemZoomOut.setEnabled(false);
         menuItemSave.setEnabled(false);
         menuItemLocalEq.setEnabled(false);
+        menuItemStatistical.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -83,6 +84,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemZoomOut.setEnabled(true);
         menuItemSave.setEnabled(true);
         menuItemLocalEq.setEnabled(true);
+        menuItemStatistical.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -131,9 +133,10 @@ public class IUMain extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         menuItemZoom = new javax.swing.JMenuItem();
         menuItemZoomOut = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        menuItemStatistical = new javax.swing.JMenu();
         menuItemSave = new javax.swing.JMenuItem();
         menuItemLocalEq = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -358,7 +361,12 @@ public class IUMain extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setText("Histogram");
+        menuItemStatistical.setText("Histogram");
+        menuItemStatistical.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemStatisticalActionPerformed(evt);
+            }
+        });
 
         menuItemSave.setText("Save");
         menuItemSave.addActionListener(new java.awt.event.ActionListener() {
@@ -366,7 +374,7 @@ public class IUMain extends javax.swing.JFrame {
                 menuItemSaveActionPerformed(evt);
             }
         });
-        jMenu6.add(menuItemSave);
+        menuItemStatistical.add(menuItemSave);
 
         menuItemLocalEq.setText("local Equalization");
         menuItemLocalEq.addActionListener(new java.awt.event.ActionListener() {
@@ -374,9 +382,12 @@ public class IUMain extends javax.swing.JFrame {
                 menuItemLocalEqActionPerformed(evt);
             }
         });
-        jMenu6.add(menuItemLocalEq);
+        menuItemStatistical.add(menuItemLocalEq);
 
-        jMenuBar1.add(jMenu6);
+        jMenuItem1.setText("Statistical enhancement Equalization");
+        menuItemStatistical.add(jMenuItem1);
+
+        jMenuBar1.add(menuItemStatistical);
 
         setJMenuBar(jMenuBar1);
 
@@ -655,6 +666,10 @@ public class IUMain extends javax.swing.JFrame {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuItemLocalEqActionPerformed
+
+    private void menuItemStatisticalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemStatisticalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemStatisticalActionPerformed
     
     /**
      * @param args the command line arguments
@@ -702,8 +717,8 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuBinary;
     private javax.swing.JMenuItem menuDarkenI;
     private javax.swing.JMenuItem menuDarkenII;
@@ -717,6 +732,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemMult;
     private javax.swing.JMenuItem menuItemRight;
     private javax.swing.JMenuItem menuItemSave;
+    private javax.swing.JMenu menuItemStatistical;
     private javax.swing.JMenuItem menuItemSub1;
     private javax.swing.JMenuItem menuItemSubtraction2;
     private javax.swing.JMenuItem menuItemVertical;
