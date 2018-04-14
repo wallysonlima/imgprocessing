@@ -430,18 +430,23 @@ public class PgmImage extends Component {
             ps.close();
         }
         
+        // Get level grayScale of histogram
+        public void getHistogram(int[] histogram) {
+            for( int c = 0; c < histogram.length; c++)
+                 histogram[c] = 0;
+             
+             for( int i = 0; i < pixels.length; i++)
+                 for( int j = 0; j < pixels[0].length; j++)
+                     histogram[ pixels[i][j] ]++;
+        }
+        
         // Save qtde pixels in with grey level Histogram in a vector
         public void saveHistogram() throws IOException {
              PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-5/Histogram.txt");
              final int MAX = 256; 
              int[] histogram = new int[MAX];
              
-             for( int c = 0; c < MAX; c++)
-                 histogram[c] = 0;
-             
-             for( int i = 0; i < pixels.length; i++)
-                 for( int j = 0; j < pixels[0].length; j++)
-                     histogram[ pixels[i][j] ]++;
+             getHistogram(histogram);
              
              for( int c = 0; c < MAX; c++)
                    ps.println(c + " " + histogram[c]);
@@ -451,7 +456,31 @@ public class PgmImage extends Component {
         
         // Equalize histogram image using local Equalization
         public void localEqualization() throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-8/localEqualizationImage.pgm");
+            final int L = 256;
+            int[] histogram = new int[L];
+            int[] acumulative = new int[L];
+            int size = pixels.length * pixels[0].length; 
+            int sum = 0;
             
+            ps.println("P2");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+             
+            getHistogram(histogram);
+            
+            // Acumulate the histogram and create lookup
+            for( int i = 0; i < L; i++) {
+                sum += histogram[i];
+                acumulative[i] = sum * (L-1) / size;
+            }
+            
+            // Change befores values to new values
+            for( int i = 0; i < pixels.length; i++)
+                for( int j = 0; j < pixels[0].length; j++ )
+                    ps.print(String.valueOf(acumulative[pixels[i][j]]) + " ");
+            
+             ps.close();
         }
         
         

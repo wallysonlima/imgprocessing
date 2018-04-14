@@ -648,7 +648,12 @@ public class IUMain extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemSaveActionPerformed
 
     private void menuItemLocalEqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLocalEqActionPerformed
-        // TODO add your handling code here:
+        try {
+            img.localEqualization();
+            JOptionPane.showMessageDialog(null, "O histograma da imagem foi equalizada com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuItemLocalEqActionPerformed
     
     /**
