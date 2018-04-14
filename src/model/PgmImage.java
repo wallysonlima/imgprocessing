@@ -432,7 +432,21 @@ public class PgmImage extends Component {
         
         // Save qtde pixels in with grey level Histogram in a vector
         public void saveHistogram() throws IOException {
-            
+             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-5/Histogram.txt");
+             final int MAX = 256; 
+             int[] histogram = new int[MAX];
+             
+             for( int c = 0; c < MAX; c++)
+                 histogram[c] = 0;
+             
+             for( int i = 0; i < pixels.length; i++)
+                 for( int j = 0; j < pixels[0].length; j++)
+                     histogram[ pixels[i][j] ]++;
+             
+             for( int c = 0; c < MAX; c++)
+                   ps.println(c + " " + histogram[c]);
+             
+             ps.close();
         }
         
         

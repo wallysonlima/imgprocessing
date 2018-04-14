@@ -358,6 +358,11 @@ public class IUMain extends javax.swing.JFrame {
         jMenu6.setText("Histogram");
 
         menuItemSave.setText("Save");
+        menuItemSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSaveActionPerformed(evt);
+            }
+        });
         jMenu6.add(menuItemSave);
 
         jMenuBar1.add(jMenu6);
@@ -621,6 +626,15 @@ public class IUMain extends javax.swing.JFrame {
              Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_menuItemZoomOutActionPerformed
+
+    private void menuItemSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSaveActionPerformed
+        try {
+            img.saveHistogram();
+            JOptionPane.showMessageDialog(null, "O histograma da imagem foi salva com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemSaveActionPerformed
     
     /**
      * @param args the command line arguments
