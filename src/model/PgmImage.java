@@ -430,6 +430,12 @@ public class PgmImage extends Component {
             ps.close();
         }
         
+        // Save qtde pixels in with grey level Histogram in a vector
+        public void saveHistogram() throws IOException {
+            
+        }
+        
+        
 	// default constructor with a 3 by 4 image
 	public PgmImage(){
 		int[][] defaultPixels = {{0, 1, 2, 3}, {4, 5, 6, 7},{8, 9, 10, 11}};

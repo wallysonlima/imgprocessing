@@ -54,6 +54,7 @@ public class IUMain extends javax.swing.JFrame {
         MenuItemTransform.setEnabled(false);
         menuItemZoom.setEnabled(false);
         menuItemZoomOut.setEnabled(false);
+        menuItemSave.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -79,6 +80,7 @@ public class IUMain extends javax.swing.JFrame {
         MenuItemTransform.setEnabled(true);
         menuItemZoom.setEnabled(true);
         menuItemZoomOut.setEnabled(true);
+        menuItemSave.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -127,6 +129,8 @@ public class IUMain extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         menuItemZoom = new javax.swing.JMenuItem();
         menuItemZoomOut = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        menuItemSave = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -350,6 +354,13 @@ public class IUMain extends javax.swing.JFrame {
         jMenu5.add(menuItemZoomOut);
 
         jMenuBar1.add(jMenu5);
+
+        jMenu6.setText("Histogram");
+
+        menuItemSave.setText("Save");
+        jMenu6.add(menuItemSave);
+
+        jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
 
@@ -657,6 +668,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuBinary;
     private javax.swing.JMenuItem menuDarkenI;
@@ -669,6 +681,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemLeft;
     private javax.swing.JMenuItem menuItemMult;
     private javax.swing.JMenuItem menuItemRight;
+    private javax.swing.JMenuItem menuItemSave;
     private javax.swing.JMenuItem menuItemSub1;
     private javax.swing.JMenuItem menuItemSubtraction2;
     private javax.swing.JMenuItem menuItemVertical;
