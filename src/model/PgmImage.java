@@ -449,6 +449,11 @@ public class PgmImage extends Component {
              ps.close();
         }
         
+        // Equalize histogram image using local Equalization
+        public void localEqualization() throws IOException {
+            
+        }
+        
         
 	// default constructor with a 3 by 4 image
 	public PgmImage(){

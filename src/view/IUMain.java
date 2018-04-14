@@ -55,6 +55,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemZoom.setEnabled(false);
         menuItemZoomOut.setEnabled(false);
         menuItemSave.setEnabled(false);
+        menuItemLocalEq.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -81,6 +82,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemZoom.setEnabled(true);
         menuItemZoomOut.setEnabled(true);
         menuItemSave.setEnabled(true);
+        menuItemLocalEq.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -131,6 +133,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemZoomOut = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         menuItemSave = new javax.swing.JMenuItem();
+        menuItemLocalEq = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -364,6 +367,14 @@ public class IUMain extends javax.swing.JFrame {
             }
         });
         jMenu6.add(menuItemSave);
+
+        menuItemLocalEq.setText("local Equalization");
+        menuItemLocalEq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemLocalEqActionPerformed(evt);
+            }
+        });
+        jMenu6.add(menuItemLocalEq);
 
         jMenuBar1.add(jMenu6);
 
@@ -635,6 +646,10 @@ public class IUMain extends javax.swing.JFrame {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuItemSaveActionPerformed
+
+    private void menuItemLocalEqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLocalEqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemLocalEqActionPerformed
     
     /**
      * @param args the command line arguments
@@ -693,6 +708,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemHighLight2;
     private javax.swing.JMenuItem menuItemHorizontal;
     private javax.swing.JMenuItem menuItemLeft;
+    private javax.swing.JMenuItem menuItemLocalEq;
     private javax.swing.JMenuItem menuItemMult;
     private javax.swing.JMenuItem menuItemRight;
     private javax.swing.JMenuItem menuItemSave;
