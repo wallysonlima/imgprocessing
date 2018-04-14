@@ -484,7 +484,40 @@ public class PgmImage extends Component {
         }
         
         public void statisticalEqualization() throws IOException {
+        PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-8/statisticalEqualizationImage.pgm");
+            final int L = 256;
+            int[] histogram = new int[L];
+            int[] position = new int[L];
+            int[] acumulative = new int[L];
+            int[] result = new int[L];
+            int size = pixels.length * pixels[0].length; 
+            float sumSt = 0;
+            int sum = 0;
             
+            ps.println("P2");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+             
+            getHistogram(histogram);
+            
+            // Acumulate the histogram and create lookup
+            for( int i = 0; i < L; i++) {
+                sumSt += histogram[i] / (float) size;
+                position[i] = Math.round(sumSt * (L-1));
+                
+                sum += histogram[i];
+                acumulative[i] = sum * (L-1) / size;
+            }
+            
+            for( int i = 0; i < L; i++)
+                result[i] = acumulative[position[i]];
+            
+            // Change befores values to new values
+            for( int i = 0; i < pixels.length; i++)
+                for( int j = 0; j < pixels[0].length; j++ )
+                    ps.print(String.valueOf(result[pixels[i][j]]) + " ");
+            
+             ps.close();
         }
         
         

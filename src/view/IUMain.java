@@ -56,7 +56,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemZoomOut.setEnabled(false);
         menuItemSave.setEnabled(false);
         menuItemLocalEq.setEnabled(false);
-        menuItemStatistical.setEnabled(false);
+        menuItemStatistic.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -84,7 +84,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemZoomOut.setEnabled(true);
         menuItemSave.setEnabled(true);
         menuItemLocalEq.setEnabled(true);
-        menuItemStatistical.setEnabled(true);
+        menuItemStatistic.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -133,10 +133,10 @@ public class IUMain extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         menuItemZoom = new javax.swing.JMenuItem();
         menuItemZoomOut = new javax.swing.JMenuItem();
-        menuItemStatistical = new javax.swing.JMenu();
+        menuItem = new javax.swing.JMenu();
         menuItemSave = new javax.swing.JMenuItem();
         menuItemLocalEq = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuItemStatistic = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -361,10 +361,10 @@ public class IUMain extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        menuItemStatistical.setText("Histogram");
-        menuItemStatistical.addActionListener(new java.awt.event.ActionListener() {
+        menuItem.setText("Histogram");
+        menuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemStatisticalActionPerformed(evt);
+                menuItemActionPerformed(evt);
             }
         });
 
@@ -374,7 +374,7 @@ public class IUMain extends javax.swing.JFrame {
                 menuItemSaveActionPerformed(evt);
             }
         });
-        menuItemStatistical.add(menuItemSave);
+        menuItem.add(menuItemSave);
 
         menuItemLocalEq.setText("local Equalization");
         menuItemLocalEq.addActionListener(new java.awt.event.ActionListener() {
@@ -382,12 +382,17 @@ public class IUMain extends javax.swing.JFrame {
                 menuItemLocalEqActionPerformed(evt);
             }
         });
-        menuItemStatistical.add(menuItemLocalEq);
+        menuItem.add(menuItemLocalEq);
 
-        jMenuItem1.setText("Statistical enhancement Equalization");
-        menuItemStatistical.add(jMenuItem1);
+        menuItemStatistic.setText("Statistical enhancement Equalization");
+        menuItemStatistic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemStatisticActionPerformed(evt);
+            }
+        });
+        menuItem.add(menuItemStatistic);
 
-        jMenuBar1.add(menuItemStatistical);
+        jMenuBar1.add(menuItem);
 
         setJMenuBar(jMenuBar1);
 
@@ -661,15 +666,24 @@ public class IUMain extends javax.swing.JFrame {
     private void menuItemLocalEqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLocalEqActionPerformed
         try {
             img.localEqualization();
-            JOptionPane.showMessageDialog(null, "O histograma da imagem foi equalizada com sucesso !\n");
+            JOptionPane.showMessageDialog(null, "O histograma da imagem foi equalizada com sucesso (Local Equalization) !\n");
         } catch (IOException ex) {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuItemLocalEqActionPerformed
 
-    private void menuItemStatisticalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemStatisticalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemStatisticalActionPerformed
+    private void menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemActionPerformed
+         
+    }//GEN-LAST:event_menuItemActionPerformed
+
+    private void menuItemStatisticActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemStatisticActionPerformed
+        try {
+            img.statisticalEqualization();
+            JOptionPane.showMessageDialog(null, "O histograma da imagem foi equalizada com sucesso (Statistic Equalization) !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemStatisticActionPerformed
     
     /**
      * @param args the command line arguments
@@ -718,11 +732,11 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuBinary;
     private javax.swing.JMenuItem menuDarkenI;
     private javax.swing.JMenuItem menuDarkenII;
     private javax.swing.JMenu menuHighlight;
+    private javax.swing.JMenu menuItem;
     private javax.swing.JMenuItem menuItemAdd;
     private javax.swing.JMenuItem menuItemHighLight1;
     private javax.swing.JMenuItem menuItemHighLight2;
@@ -732,7 +746,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemMult;
     private javax.swing.JMenuItem menuItemRight;
     private javax.swing.JMenuItem menuItemSave;
-    private javax.swing.JMenu menuItemStatistical;
+    private javax.swing.JMenuItem menuItemStatistic;
     private javax.swing.JMenuItem menuItemSub1;
     private javax.swing.JMenuItem menuItemSubtraction2;
     private javax.swing.JMenuItem menuItemVertical;
