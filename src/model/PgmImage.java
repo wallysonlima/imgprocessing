@@ -520,6 +520,11 @@ public class PgmImage extends Component {
              ps.close();
         }
         
+        // Spacial filter using Generic nxn filter
+        public void genericFilter(int dim) {
+            
+        }
+        
         
 	// default constructor with a 3 by 4 image
 	public PgmImage(){

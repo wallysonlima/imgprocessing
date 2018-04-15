@@ -57,6 +57,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItemSave.setEnabled(false);
         menuItemLocalEq.setEnabled(false);
         menuItemStatistic.setEnabled(false);
+        menuItemGeneric.setEnabled(false);
+        menuItem16.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -85,6 +87,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItemSave.setEnabled(true);
         menuItemLocalEq.setEnabled(true);
         menuItemStatistic.setEnabled(true);
+        menuItemGeneric.setEnabled(true);
+        menuItem16.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -137,6 +141,9 @@ public class IUMain extends javax.swing.JFrame {
         menuItemSave = new javax.swing.JMenuItem();
         menuItemLocalEq = new javax.swing.JMenuItem();
         menuItemStatistic = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        menuItem16 = new javax.swing.JMenuItem();
+        menuItemGeneric = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -394,13 +401,23 @@ public class IUMain extends javax.swing.JFrame {
 
         jMenuBar1.add(menuItem);
 
+        jMenu6.setText("to Filter");
+
+        menuItem16.setText("3x3 / 16");
+        jMenu6.add(menuItem16);
+
+        menuItemGeneric.setText("Generic");
+        jMenu6.add(menuItemGeneric);
+
+        jMenuBar1.add(jMenu6);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 763, Short.MAX_VALUE)
+            .addGap(0, 912, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -731,13 +748,16 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuBinary;
     private javax.swing.JMenuItem menuDarkenI;
     private javax.swing.JMenuItem menuDarkenII;
     private javax.swing.JMenu menuHighlight;
     private javax.swing.JMenu menuItem;
+    private javax.swing.JMenuItem menuItem16;
     private javax.swing.JMenuItem menuItemAdd;
+    private javax.swing.JMenuItem menuItemGeneric;
     private javax.swing.JMenuItem menuItemHighLight1;
     private javax.swing.JMenuItem menuItemHighLight2;
     private javax.swing.JMenuItem menuItemHorizontal;
