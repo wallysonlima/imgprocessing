@@ -296,6 +296,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="3x3 / 16"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem16ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemGeneric">
               <Properties>

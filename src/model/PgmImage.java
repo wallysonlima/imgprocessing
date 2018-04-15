@@ -542,8 +542,6 @@ public class PgmImage extends Component {
         public void spacialFilter(int dim) throws IOException {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-6/spacialfilter" + dim + "x" + dim + ".pgm");
             int size = dim * dim;
-            int[][] filter = new int[dim][dim];
-            int[][] matrix = new int[pixels.length][pixels[0].length];
             float sum;
             int ini;
             int temp;
@@ -558,8 +556,8 @@ public class PgmImage extends Component {
                     ini = -(dim/2);
                     sum = 0;
                     
-                    for( int r = ini; r < dim; r++)
-                        for( int c = ini; c < dim; c++ )
+                    for( int r = ini; r < dim + ini; r++)
+                        for( int c = ini; c < dim + ini; c++ )
                             if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length )
                                 sum += pixels[i + r][j + c];
                     
@@ -567,14 +565,40 @@ public class PgmImage extends Component {
                         temp = 255;
                     
                     ps.print(String.valueOf(temp) + " ");
-                    //matrix[i][j] = Math.round(sum / (float) size);
                 }
            
-            /*
+            ps.close();
+        }
+        
+        public void spacialFilter16(int dim) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-6/spacialfilter16-" + dim + "x" + dim + ".pgm");
+            int size = 16;
+            int[][] filter = {{1,2,1}, {2,4,2}, {1,2,1}};
+            float sum;
+            int ini;
+            int temp;
+            
+            ps.println("P2");
+            ps.println("#Spacial Filter 16");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
             for( int i = 0; i < pixels.length; i++)
-                for( int j = 0; j < pixels[0].length; j++ )
-                    ps.print(String.valueOf(matrix[i][j]) + " ");
-            */  
+                for( int j = 0; j < pixels[0].length; j++ ) {
+                    ini = -1;
+                    sum = 0;
+                    
+                    for( int r = ini; r < dim + ini; r++)
+                        for( int c = ini; c < dim + ini; c++ )
+                            if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length )
+                                sum += pixels[i + r][j + c] * filter[r+1][c+1];
+                    
+                    if ( (temp = Math.round(sum / (float) size)) > 255 )
+                        temp = 255;
+                    
+                    ps.print(String.valueOf(temp) + " ");
+                }
+           
             ps.close();
         }
         

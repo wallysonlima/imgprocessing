@@ -404,6 +404,11 @@ public class IUMain extends javax.swing.JFrame {
         jMenu6.setText("to Filter");
 
         menuItem16.setText("3x3 / 16");
+        menuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem16ActionPerformed(evt);
+            }
+        });
         jMenu6.add(menuItem16);
 
         menuItemGeneric.setText("Generic");
@@ -716,6 +721,16 @@ public class IUMain extends javax.swing.JFrame {
              Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_menuItemGenericActionPerformed
+
+    private void menuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem16ActionPerformed
+        try {
+             int dim = 3;
+             img.spacialFilter16(dim);
+             JOptionPane.showMessageDialog(null, "A imagem foi filtrada com sucesso !\n");
+         } catch (IOException ex) {
+             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_menuItem16ActionPerformed
     
     /**
      * @param args the command line arguments
