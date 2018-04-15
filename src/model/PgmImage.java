@@ -484,7 +484,7 @@ public class PgmImage extends Component {
         }
         
         public void statisticalEqualization() throws IOException {
-        PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-8/statisticalEqualizationImage.pgm");
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-8/statisticalEqualizationImage.pgm");
             final int L = 256;
             int[] histogram = new int[L];
             int[] position = new int[L];
@@ -517,12 +517,46 @@ public class PgmImage extends Component {
                 for( int j = 0; j < pixels[0].length; j++ )
                     ps.print(String.valueOf(result[pixels[i][j]]) + " ");
             
-             ps.close();
+            ps.close();
         }
         
         // Spacial filter using Generic nxn filter
-        public void genericFilter(int dim) {
+        public void spacialFilter(int dim) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-6/spacialfilter" + dim + "x" + dim + ".pgm");
+            int size = dim * dim;
+            int[][] filter = new int[dim][dim];
+            int[][] matrix = new int[pixels.length][pixels[0].length];
+            float sum;
+            int ini;
+            int temp;
             
+            ps.println("P2");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
+            for( int i = 0; i < pixels.length; i++)
+                for( int j = 0; j < pixels[0].length; j++ ) {
+                    ini = -(dim/2);
+                    sum = 0;
+                    
+                    for( int r = ini; r < dim; r++)
+                        for( int c = ini; c < dim; c++ )
+                            if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length )
+                                sum += pixels[i + r][j + c];
+                    
+                    if ( (temp = Math.round(sum / (float) size)) > 255 )
+                        temp = 255;
+                    
+                    ps.print(String.valueOf(temp) + " ");
+                    //matrix[i][j] = Math.round(sum / (float) size);
+                }
+           
+            /*
+            for( int i = 0; i < pixels.length; i++)
+                for( int j = 0; j < pixels[0].length; j++ )
+                    ps.print(String.valueOf(matrix[i][j]) + " ");
+            */  
+            ps.close();
         }
         
         

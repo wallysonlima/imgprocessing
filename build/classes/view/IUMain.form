@@ -301,6 +301,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Generic"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemGenericActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
