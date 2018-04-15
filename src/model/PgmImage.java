@@ -50,6 +50,7 @@ public class PgmImage extends Component {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-07-03/negativeImage.pgm");
             
             ps.println("P2");
+            ps.println("#Negative");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -65,6 +66,7 @@ public class PgmImage extends Component {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-1/darkenImageI.pgm");
             
             ps.println("P2");
+            ps.println("#Darken I");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -83,6 +85,7 @@ public class PgmImage extends Component {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-1/darkenImageII.pgm");
             
             ps.println("P2");
+             ps.println("#Darken II");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -99,6 +102,7 @@ public class PgmImage extends Component {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-1/ligthenImageByAddValue.pgm");
             
             ps.println("P2");
+            ps.println("#Lighten By Add value");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -117,6 +121,7 @@ public class PgmImage extends Component {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-1/ligthenImageByMultValue.pgm");
             
             ps.println("P2");
+            ps.println("#Lighten By Mult");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -171,6 +176,7 @@ public class PgmImage extends Component {
             int[][] matrix = horizontalFlip(temp);
             
             ps.println("P2");
+            ps.println("#Rotate Right");
             ps.println(matrix[0].length + " " + matrix.length);
             ps.println(maxValue);
             
@@ -190,6 +196,7 @@ public class PgmImage extends Component {
             int[][] matrix = verticalFlip(temp);
             
             ps.println("P2");
+            ps.println("#Rotate Left");
             ps.println(matrix[0].length + " " + matrix.length);
             ps.println(maxValue);
             
@@ -208,6 +215,7 @@ public class PgmImage extends Component {
             //int[][] matrix = verticalFlip(temp);
             
             ps.println("P2");
+            ps.println("#Rotate Horizontal");
             ps.println(matrix[0].length + " " + matrix.length);
             ps.println(maxValue);
             
@@ -225,6 +233,7 @@ public class PgmImage extends Component {
             int[][] matrix = verticalFlip(pixels);
             
             ps.println("P2");
+            ps.println("#Rotate Vertical");
             ps.println(matrix[0].length + " " + matrix.length);
             ps.println(maxValue);
             
@@ -240,6 +249,7 @@ public class PgmImage extends Component {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-2/binarization.pgm");
             
             ps.println("P2");
+            ps.println("#Binary");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -258,6 +268,7 @@ public class PgmImage extends Component {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-2/reduction" + value + ".pgm");
             
             ps.println("P2");
+            ps.println("#Reduction");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -273,6 +284,7 @@ public class PgmImage extends Component {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-3/highlight1.pgm");
             
             ps.println("P2");
+            ps.println("#Highlights Transformation");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -291,6 +303,7 @@ public class PgmImage extends Component {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-3/highlight2.pgm");
             
             ps.println("P2");
+            ps.println("#Highlights Transformation 2");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -309,6 +322,7 @@ public class PgmImage extends Component {
             int[][] matrix = new int[rows][cols];
             
             ps.println("P2");
+            ps.println("#Subtraction 1");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -337,6 +351,7 @@ public class PgmImage extends Component {
             int[][] matrix = new int[rows][cols];
             
             ps.println("P2");
+            ps.println("#Subtraction 2");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -368,6 +383,7 @@ public class PgmImage extends Component {
             int value = 0;
             
             ps.println("P2");
+            ps.println("#Transform Power");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
@@ -464,6 +480,7 @@ public class PgmImage extends Component {
             int sum = 0;
             
             ps.println("P2");
+            ps.println("#Local Equalization");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
              
@@ -495,6 +512,7 @@ public class PgmImage extends Component {
             int sum = 0;
             
             ps.println("P2");
+            ps.println("#Statistical Equalization");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
              
@@ -531,6 +549,7 @@ public class PgmImage extends Component {
             int temp;
             
             ps.println("P2");
+            ps.println("#Spacial Filter");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
