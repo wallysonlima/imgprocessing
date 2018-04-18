@@ -302,11 +302,24 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemGeneric">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Generic"/>
+                <Property name="text" type="java.lang.String" value="Generic Spacial"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemGenericActionPerformed"/>
               </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemLaplace4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Laplace 4"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemLaplace4ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemLaplace8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Laplace 8"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

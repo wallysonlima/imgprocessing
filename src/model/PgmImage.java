@@ -551,7 +551,7 @@ public class PgmImage extends Component {
             ps.println(cols + " " + rows);
             ps.println(maxValue);
             
-            for( int i = 0; i < pixels.length; i++)
+            for( int i = 0; i < pixels.length; i++ )
                 for( int j = 0; j < pixels[0].length; j++ ) {
                     ini = -(dim/2);
                     sum = 0;

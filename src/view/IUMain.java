@@ -144,6 +144,8 @@ public class IUMain extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         menuItem16 = new javax.swing.JMenuItem();
         menuItemGeneric = new javax.swing.JMenuItem();
+        menuItemLaplace4 = new javax.swing.JMenuItem();
+        menuItemLaplace8 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -411,13 +413,24 @@ public class IUMain extends javax.swing.JFrame {
         });
         jMenu6.add(menuItem16);
 
-        menuItemGeneric.setText("Generic");
+        menuItemGeneric.setText("Generic Spacial");
         menuItemGeneric.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemGenericActionPerformed(evt);
             }
         });
         jMenu6.add(menuItemGeneric);
+
+        menuItemLaplace4.setText("Laplace 4");
+        menuItemLaplace4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemLaplace4ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(menuItemLaplace4);
+
+        menuItemLaplace8.setText("Laplace 8");
+        jMenu6.add(menuItemLaplace8);
 
         jMenuBar1.add(jMenu6);
 
@@ -731,6 +744,15 @@ public class IUMain extends javax.swing.JFrame {
              Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_menuItem16ActionPerformed
+
+    private void menuItemLaplace4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLaplace4ActionPerformed
+        try {
+            int dim = 3;
+            
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemLaplace4ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -791,6 +813,8 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemHighLight1;
     private javax.swing.JMenuItem menuItemHighLight2;
     private javax.swing.JMenuItem menuItemHorizontal;
+    private javax.swing.JMenuItem menuItemLaplace4;
+    private javax.swing.JMenuItem menuItemLaplace8;
     private javax.swing.JMenuItem menuItemLeft;
     private javax.swing.JMenuItem menuItemLocalEq;
     private javax.swing.JMenuItem menuItemMult;
