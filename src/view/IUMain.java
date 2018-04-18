@@ -748,7 +748,8 @@ public class IUMain extends javax.swing.JFrame {
     private void menuItemLaplace4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLaplace4ActionPerformed
         try {
             int dim = 3;
-            
+            img.laplaceFilter4(dim);
+            JOptionPane.showMessageDialog(null, "A imagem foi filtrada com sucesso !\n"); 
         } catch (IOException ex) {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
