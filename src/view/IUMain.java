@@ -59,6 +59,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItemStatistic.setEnabled(false);
         menuItemGeneric.setEnabled(false);
         menuItem16.setEnabled(false);
+        menuItemLaplace4.setEnabled(false);
+        menuItemLaplace8.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -89,6 +91,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItemStatistic.setEnabled(true);
         menuItemGeneric.setEnabled(true);
         menuItem16.setEnabled(true);
+        menuItemLaplace4.setEnabled(true);
+        menuItemLaplace8.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -430,6 +434,11 @@ public class IUMain extends javax.swing.JFrame {
         jMenu6.add(menuItemLaplace4);
 
         menuItemLaplace8.setText("Laplace 8");
+        menuItemLaplace8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemLaplace8ActionPerformed(evt);
+            }
+        });
         jMenu6.add(menuItemLaplace8);
 
         jMenuBar1.add(jMenu6);
@@ -754,6 +763,16 @@ public class IUMain extends javax.swing.JFrame {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuItemLaplace4ActionPerformed
+
+    private void menuItemLaplace8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLaplace8ActionPerformed
+        try {
+            int dim = 3;
+            img.laplaceFilter8(dim);
+            JOptionPane.showMessageDialog(null, "A imagem foi filtrada com sucesso !\n"); 
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemLaplace8ActionPerformed
     
     /**
      * @param args the command line arguments

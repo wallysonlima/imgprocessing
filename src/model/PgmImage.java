@@ -649,6 +649,52 @@ public class PgmImage extends Component {
             ps.close();
         }
         
+        public void laplaceFilter8(int dim) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-7/laplaceFilter8.pgm");
+            int[][] filter = {{-1,-1,-1}, {-1,8,-1}, {-1,-1,-1}};
+            int [][] laplace = new int[pixels.length][pixels[0].length];
+            int sum;
+            int ini;
+            int temp;
+            
+            ps.println("P2");
+            ps.println("#Laplace Filter 4");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
+            for( int i = 0; i < pixels.length; i++)
+                for( int j = 0; j < pixels[0].length; j++ ) {
+                    ini = -1;
+                    sum = 0;
+                    
+                    for( int r = ini; r < dim + ini; r++)
+                        for( int c = ini; c < dim + ini; c++ )
+                            if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length )
+                                sum += pixels[i + r][j + c] * filter[r+1][c+1];
+                    
+                    if ( sum >= 0 && sum <= 255 )
+                        laplace[i][j] = sum;                        
+                    else if ( sum > 255 )
+                        laplace[i][j] = 255;
+                    else if ( sum < 0 )
+                        laplace[i][j] = 0;
+                }
+            
+            for( int i = 0; i < pixels.length; i++)
+                for( int j = 0; j < pixels[0].length; j++ ) {
+                    temp = pixels[i][j] + laplace[i][j];
+                    
+                    if ( temp > 255 )
+                        temp = 255;
+                    else if ( temp < 0 )
+                        temp = 0;
+                    
+                    ps.print(String.valueOf(temp) + " ");
+                }
+            
+            ps.close();
+        }
+        
 	// default constructor with a 3 by 4 image
 	public PgmImage(){
 		int[][] defaultPixels = {{0, 1, 2, 3}, {4, 5, 6, 7},{8, 9, 10, 11}};
