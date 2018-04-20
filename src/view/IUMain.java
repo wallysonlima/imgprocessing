@@ -464,7 +464,7 @@ public class IUMain extends javax.swing.JFrame {
         FileInputStream f;
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "PNG & PGM Images", "png", "pgm");
+                "PNG, PGM And PPM Images", "png", "pgm", "ppm");
         chooser.setFileFilter(filter);
         
         int returnVal = chooser.showOpenDialog(null);
@@ -475,7 +475,13 @@ public class IUMain extends javax.swing.JFrame {
                     filename);
             
             menuEnable();
-            img = new PgmImage(filename);
+            
+            // Verificate if pgm or ppm image and open specific format
+            if( !filename.substring(filename.length() - 3).equalsIgnoreCase("ppm") )
+                img = new PgmImage(filename);
+            else
+                img = new PgmImage(filename, true);
+            
             JOptionPane.showMessageDialog(null, "Imagem Aberta com Sucesso !\n");
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao abrir a imagem !\n");
