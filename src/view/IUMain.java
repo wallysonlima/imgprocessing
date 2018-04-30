@@ -129,6 +129,11 @@ public class IUMain extends javax.swing.JFrame {
         menuItemAdd = new javax.swing.JMenuItem();
         menuItemMult = new javax.swing.JMenuItem();
         menuItemLightColored = new javax.swing.JMenuItem();
+        menuItemMixrbg = new javax.swing.JMenuItem();
+        menuItemMixgrb = new javax.swing.JMenuItem();
+        menuItemMixgbr = new javax.swing.JMenuItem();
+        menuItemMixbrg = new javax.swing.JMenuItem();
+        menuItemMixbgr = new javax.swing.JMenuItem();
         menuRotate = new javax.swing.JMenu();
         menuItemRight = new javax.swing.JMenuItem();
         menuItemLeft = new javax.swing.JMenuItem();
@@ -237,6 +242,46 @@ public class IUMain extends javax.swing.JFrame {
             }
         });
         menuLighten.add(menuItemLightColored);
+
+        menuItemMixrbg.setText("mix (R, B, G)");
+        menuItemMixrbg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemMixrbgActionPerformed(evt);
+            }
+        });
+        menuLighten.add(menuItemMixrbg);
+
+        menuItemMixgrb.setText("mix (G, R, B)");
+        menuItemMixgrb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemMixgrbActionPerformed(evt);
+            }
+        });
+        menuLighten.add(menuItemMixgrb);
+
+        menuItemMixgbr.setText("mix (G, B, R)");
+        menuItemMixgbr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemMixgbrActionPerformed(evt);
+            }
+        });
+        menuLighten.add(menuItemMixgbr);
+
+        menuItemMixbrg.setText("mix (B, R, G)");
+        menuItemMixbrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemMixbrgActionPerformed(evt);
+            }
+        });
+        menuLighten.add(menuItemMixbrg);
+
+        menuItemMixbgr.setText("mix (B, G, R)");
+        menuItemMixbgr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemMixbgrActionPerformed(evt);
+            }
+        });
+        menuLighten.add(menuItemMixbgr);
 
         jMenuBar1.add(menuLighten);
 
@@ -834,6 +879,26 @@ public class IUMain extends javax.swing.JFrame {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }     
     }//GEN-LAST:event_menuItemLightColoredActionPerformed
+
+    private void menuItemMixgbrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMixgbrActionPerformed
+        String option = "GB";
+    }//GEN-LAST:event_menuItemMixgbrActionPerformed
+
+    private void menuItemMixrbgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMixrbgActionPerformed
+       String option = "RB";
+    }//GEN-LAST:event_menuItemMixrbgActionPerformed
+
+    private void menuItemMixgrbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMixgrbActionPerformed
+       String option = "GR";
+    }//GEN-LAST:event_menuItemMixgrbActionPerformed
+
+    private void menuItemMixbrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMixbrgActionPerformed
+       String option = "BR";
+    }//GEN-LAST:event_menuItemMixbrgActionPerformed
+
+    private void menuItemMixbgrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMixbgrActionPerformed
+        String option = "BG";
+    }//GEN-LAST:event_menuItemMixbgrActionPerformed
     
     /**
      * @param args the command line arguments
@@ -900,6 +965,11 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemLeft;
     private javax.swing.JMenuItem menuItemLightColored;
     private javax.swing.JMenuItem menuItemLocalEq;
+    private javax.swing.JMenuItem menuItemMixbgr;
+    private javax.swing.JMenuItem menuItemMixbrg;
+    private javax.swing.JMenuItem menuItemMixgbr;
+    private javax.swing.JMenuItem menuItemMixgrb;
+    private javax.swing.JMenuItem menuItemMixrbg;
     private javax.swing.JMenuItem menuItemMult;
     private javax.swing.JMenuItem menuItemRight;
     private javax.swing.JMenuItem menuItemSave;

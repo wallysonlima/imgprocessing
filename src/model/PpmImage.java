@@ -28,7 +28,8 @@ public class PpmImage {
             readPPM(filename);
     }
     
-     public void convertToDarken(int value, String type) throws IOException {
+    // Dark the colored image, only the Canal R or G or B.
+    public void convertToDarken(int value, String type) throws IOException {
             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/darkenImage" + type + ".ppm");
             
             ps.println("P3");
@@ -72,48 +73,48 @@ public class PpmImage {
             ps.close();
         }
      
-     // Image to Lighten by add Value
-        public void convertToLighten(int value, String type) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/ligthenImage" + type + ".ppm");
-            
-            ps.println("P3");
-            ps.println("#Lighten By Add value");
-            ps.println(cols + " " + rows);
-            ps.println(maxValue);
-            
-            for( int r = 0; r < rows; r++ )
-                for ( int c = 0; c < cols; c++ )
-                    if ( type.equalsIgnoreCase("R") ) {
-                        if ( (red[r][c] + value) < 255 )
-                            ps.println(String.valueOf(red[r][c] + value)  + " ");    
-                        else
-                            ps.println(String.valueOf(255)  + " ");
-                        
-                        ps.println(String.valueOf(green[r][c]));
-                        ps.println(String.valueOf(blue[r][c]));
-                    }
-                    else if ( type.equalsIgnoreCase("G") ) {
-                        ps.println(String.valueOf(red[r][c]));
-                        
-                        if ( (green[r][c] + value) < 255 )
-                            ps.println(String.valueOf(green[r][c] + value)  + " ");    
-                        else
-                            ps.println(String.valueOf(255)  + " ");
-                        
-                        ps.println(String.valueOf(blue[r][c]));
-                    }
-                    else {
-                        ps.println(String.valueOf(red[r][c]));
-                        ps.println(String.valueOf(green[r][c]));
-                        
-                        if ( (blue[r][c] + value) < 255 )
-                            ps.println(String.valueOf(blue[r][c] + value)  + " ");    
-                        else
-                            ps.println(String.valueOf(255)  + " ");
-                    }
-                    
-            ps.close();
-        }
+    // Lighten the colored image, only the Canal R or G or B.
+    public void convertToLighten(int value, String type) throws IOException {
+        PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/ligthenImage" + type + ".ppm");
+
+        ps.println("P3");
+        ps.println("#Lighten By Add value");
+        ps.println(cols + " " + rows);
+        ps.println(maxValue);
+
+        for( int r = 0; r < rows; r++ )
+            for ( int c = 0; c < cols; c++ )
+                if ( type.equalsIgnoreCase("R") ) {
+                    if ( (red[r][c] + value) < 255 )
+                        ps.println(String.valueOf(red[r][c] + value)  + " ");    
+                    else
+                        ps.println(String.valueOf(255)  + " ");
+
+                    ps.println(String.valueOf(green[r][c]));
+                    ps.println(String.valueOf(blue[r][c]));
+                }
+                else if ( type.equalsIgnoreCase("G") ) {
+                    ps.println(String.valueOf(red[r][c]));
+
+                    if ( (green[r][c] + value) < 255 )
+                        ps.println(String.valueOf(green[r][c] + value)  + " ");    
+                    else
+                        ps.println(String.valueOf(255)  + " ");
+
+                    ps.println(String.valueOf(blue[r][c]));
+                }
+                else {
+                    ps.println(String.valueOf(red[r][c]));
+                    ps.println(String.valueOf(green[r][c]));
+
+                    if ( (blue[r][c] + value) < 255 )
+                        ps.println(String.valueOf(blue[r][c] + value)  + " ");    
+                    else
+                        ps.println(String.valueOf(255)  + " ");
+                }
+
+        ps.close();
+    }
     
     // load gray scale pixel values from a PPM format image
     public void readPPM(String filename){
