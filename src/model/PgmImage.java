@@ -716,11 +716,7 @@ public class PgmImage extends Component {
 			pix2img();
 	}
         
-        // constructor that loads ppm image from a file
-	public PgmImage(String filename, boolean ppm) {
-		pixels = null;
-		readPPM(filename);
-	}
+       
         
         // Save PGM image
         public void savePGM(String filename) throws FileNotFoundException {
@@ -758,41 +754,6 @@ public class PgmImage extends Component {
 	   	   	for (int r=0; r<rows; r++) 
 	   	   		for (int c=0; c<cols; c++)
 	   	   			pixels[r][c] = (int)(infile.nextInt()*255.0/maxValue);
-	   	   	infile.close();
-	    } catch(FileNotFoundException fe) {
-	    	System.out.println("Had a problem opening a file.");
-	    } catch (Exception e) {
-	    	System.out.println(e.toString() + " caught in readPPM.");
-	    	e.printStackTrace();
-	    }
-	}
-        
-        // load gray scale pixel values from a PPM format image
-	public void readPPM(String filename){
-		try {                        		    
-		    Scanner infile = new Scanner(new FileReader(filename));
-		    // process the top 4 header lines
-		    String filetype=infile.nextLine();
-		    if (!filetype.equalsIgnoreCase("p3")) {
-		    	System.out.println("[readPPM]Cannot load the image type of "+filetype);
-		    	return;
-		    }
-	   	   	infile.nextLine();	   	   	   
-	   	   	cols = infile.nextInt();
-	   	   	rows = infile.nextInt();
-	   	   	maxValue = infile.nextInt();	        
-	   	   	red = new int[rows][cols];
-                        green = new int[rows][cols];
-                        blue = new int[rows][cols];
-	   	   	System.out.println("Reading in image from " + filename + " of size " + rows + " by " + cols);
-	   	   	// process the rest lines that hold the actual pixel values
-	   	   	for (int r=0; r<rows; r++) 
-	   	   		for (int c=0; c<cols; c++) {
-                                    red[r][c] = (int)(infile.nextInt()*255.0/maxValue);
-                                    green[r][c] = (int)(infile.nextInt()*255.0/maxValue);
-                                    blue[r][c] = (int)(infile.nextInt()*255.0/maxValue);
-                                }
-	   	   			
 	   	   	infile.close();
 	    } catch(FileNotFoundException fe) {
 	    	System.out.println("Had a problem opening a file.");

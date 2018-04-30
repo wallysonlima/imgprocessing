@@ -19,6 +19,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.PgmImage;
+import model.PpmImage;
 
 /**
  *
@@ -26,6 +27,7 @@ import model.PgmImage;
  */
 public class IUMain extends javax.swing.JFrame {
     PgmImage img;
+    PpmImage pimg;
     /**
      * Creates new form IUMain
      */
@@ -480,7 +482,7 @@ public class IUMain extends javax.swing.JFrame {
             if( !filename.substring(filename.length() - 3).equalsIgnoreCase("ppm") )
                 img = new PgmImage(filename);
             else
-                img = new PgmImage(filename, true);
+                pimg = new PpmImage(filename);
             
             JOptionPane.showMessageDialog(null, "Imagem Aberta com Sucesso !\n");
         } else {
