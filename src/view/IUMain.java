@@ -63,6 +63,8 @@ public class IUMain extends javax.swing.JFrame {
         menuItem16.setEnabled(false);
         menuItemLaplace4.setEnabled(false);
         menuItemLaplace8.setEnabled(false);
+        menuItemLightColored.setEnabled(false);
+        menuItemDarkenColored.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -70,7 +72,7 @@ public class IUMain extends javax.swing.JFrame {
     }
     
     // Enable item menu
-    public void menuEnable() {
+    public void menuEnablePgm() {
         menuNegative.setEnabled(true);
         menuDarkenI.setEnabled(true);
         menuDarkenII.setEnabled(true);
@@ -100,6 +102,11 @@ public class IUMain extends javax.swing.JFrame {
         _4.setEnabled(true);
         _2.setEnabled(true);
     }
+    
+    public void menuEnablePpm() {
+        menuItemLightColored.setEnabled(true);
+        menuItemDarkenColored.setEnabled(true);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,9 +124,11 @@ public class IUMain extends javax.swing.JFrame {
         menuNegative = new javax.swing.JMenuItem();
         menuDarkenI = new javax.swing.JMenuItem();
         menuDarkenII = new javax.swing.JMenuItem();
+        menuItemDarkenColored = new javax.swing.JMenuItem();
         menuLighten = new javax.swing.JMenu();
         menuItemAdd = new javax.swing.JMenuItem();
         menuItemMult = new javax.swing.JMenuItem();
+        menuItemLightColored = new javax.swing.JMenuItem();
         menuRotate = new javax.swing.JMenu();
         menuItemRight = new javax.swing.JMenuItem();
         menuItemLeft = new javax.swing.JMenuItem();
@@ -193,6 +202,14 @@ public class IUMain extends javax.swing.JFrame {
         });
         jMenu2.add(menuDarkenII);
 
+        menuItemDarkenColored.setText("colored image (PPM)");
+        menuItemDarkenColored.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemDarkenColoredActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuItemDarkenColored);
+
         jMenuBar1.add(jMenu2);
 
         menuLighten.setText("to Lighten");
@@ -212,6 +229,14 @@ public class IUMain extends javax.swing.JFrame {
             }
         });
         menuLighten.add(menuItemMult);
+
+        menuItemLightColored.setText("colored Image (PPM)");
+        menuItemLightColored.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemLightColoredActionPerformed(evt);
+            }
+        });
+        menuLighten.add(menuItemLightColored);
 
         jMenuBar1.add(menuLighten);
 
@@ -476,13 +501,17 @@ public class IUMain extends javax.swing.JFrame {
             System.out.println("You chose to open this file: " +
                     filename);
             
-            menuEnable();
-            
             // Verificate if pgm or ppm image and open specific format
-            if( !filename.substring(filename.length() - 3).equalsIgnoreCase("ppm") )
+            if( !filename.substring(filename.length() - 3).equalsIgnoreCase("ppm") ) {
                 img = new PgmImage(filename);
-            else
-                pimg = new PpmImage(filename);
+                menuDisable();
+                menuEnablePgm();
+            }
+            else {
+                pimg = new PpmImage(filename); 
+                menuDisable();
+                menuEnablePpm();
+            }
             
             JOptionPane.showMessageDialog(null, "Imagem Aberta com Sucesso !\n");
         } else {
@@ -781,6 +810,30 @@ public class IUMain extends javax.swing.JFrame {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuItemLaplace8ActionPerformed
+
+    private void menuItemDarkenColoredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDarkenColoredActionPerformed
+        int value = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor para ser escurecido a imagem"));
+        String type = JOptionPane.showInputDialog("Digite a letra Correspondente ao canal a ser alterado (R, G, B)");
+        
+        try {
+            pimg.convertToDarken(value, type);
+            JOptionPane.showMessageDialog(null, "A imagem foi escurecida com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }     
+    }//GEN-LAST:event_menuItemDarkenColoredActionPerformed
+
+    private void menuItemLightColoredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLightColoredActionPerformed
+        int value = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor para ser clareado a imagem"));
+        String type = JOptionPane.showInputDialog("Digite a letra Correspondente ao canal a ser alterado (R, G, B)");
+        
+        try {
+            pimg.convertToLighten(value, type);
+            JOptionPane.showMessageDialog(null, "A imagem foi clareada com sucesso !\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }     
+    }//GEN-LAST:event_menuItemLightColoredActionPerformed
     
     /**
      * @param args the command line arguments
@@ -837,6 +890,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenu menuItem;
     private javax.swing.JMenuItem menuItem16;
     private javax.swing.JMenuItem menuItemAdd;
+    private javax.swing.JMenuItem menuItemDarkenColored;
     private javax.swing.JMenuItem menuItemGeneric;
     private javax.swing.JMenuItem menuItemHighLight1;
     private javax.swing.JMenuItem menuItemHighLight2;
@@ -844,6 +898,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemLaplace4;
     private javax.swing.JMenuItem menuItemLaplace8;
     private javax.swing.JMenuItem menuItemLeft;
+    private javax.swing.JMenuItem menuItemLightColored;
     private javax.swing.JMenuItem menuItemLocalEq;
     private javax.swing.JMenuItem menuItemMult;
     private javax.swing.JMenuItem menuItemRight;

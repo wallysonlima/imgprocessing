@@ -29,7 +29,7 @@ public class PpmImage {
     }
     
      public void convertToDarken(int value, String type) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/darkenImage" + type + ".pgm");
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/darkenImage" + type + ".ppm");
             
             ps.println("P3");
             ps.println("#Darken " + type);
@@ -40,21 +40,32 @@ public class PpmImage {
                 for ( int c = 0; c < cols; c++ )
                     if ( type.equalsIgnoreCase("R") ) {
                         if ( (red[r][c] - value) > 0 )
-                            ps.print(String.valueOf(red[r][c] - value)  + " ");    
+                            ps.println(String.valueOf(red[r][c] - value)  + " ");    
                         else
-                            ps.print(String.valueOf(0)  + " ");
+                            ps.println(String.valueOf(0)  + " ");
+                        
+                         ps.println(String.valueOf(green[r][c]));
+                         ps.println(String.valueOf(blue[r][c]));
+                        
                     }
                     else if ( type.equalsIgnoreCase("G") ) {
+                         ps.println(String.valueOf(red[r][c]));
+                        
                         if ( (green[r][c] - value) > 0 )
-                            ps.print(String.valueOf(green[r][c] - value)  + " ");    
+                            ps.println(String.valueOf(green[r][c] - value)  + " ");    
                         else
-                            ps.print(String.valueOf(0)  + " ");
+                            ps.println(String.valueOf(0)  + " ");
+                        
+                        ps.println(String.valueOf(blue[r][c]));
                     }
                     else {
+                        ps.println(String.valueOf(red[r][c]));
+                        ps.println(String.valueOf(green[r][c]));
+                        
                         if ( (blue[r][c] - value) > 0 )
-                            ps.print(String.valueOf(blue[r][c] - value)  + " ");    
+                            ps.println(String.valueOf(blue[r][c] - value)  + " ");    
                         else
-                            ps.print(String.valueOf(0)  + " ");
+                            ps.println(String.valueOf(0)  + " ");
                     }
                         
             
@@ -62,10 +73,10 @@ public class PpmImage {
         }
      
      // Image to Lighten by add Value
-        public void convertToLightenByAddValue(int value, String type) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/ligthenImage + " + type + ".pgm");
+        public void convertToLighten(int value, String type) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/ligthenImage" + type + ".ppm");
             
-            ps.println("P2");
+            ps.println("P3");
             ps.println("#Lighten By Add value");
             ps.println(cols + " " + rows);
             ps.println(maxValue);
@@ -74,21 +85,31 @@ public class PpmImage {
                 for ( int c = 0; c < cols; c++ )
                     if ( type.equalsIgnoreCase("R") ) {
                         if ( (red[r][c] + value) < 255 )
-                            ps.print(String.valueOf(red[r][c] + value)  + " ");    
+                            ps.println(String.valueOf(red[r][c] + value)  + " ");    
                         else
-                            ps.print(String.valueOf(255)  + " ");
+                            ps.println(String.valueOf(255)  + " ");
+                        
+                        ps.println(String.valueOf(green[r][c]));
+                        ps.println(String.valueOf(blue[r][c]));
                     }
                     else if ( type.equalsIgnoreCase("G") ) {
+                        ps.println(String.valueOf(red[r][c]));
+                        
                         if ( (green[r][c] + value) < 255 )
-                            ps.print(String.valueOf(green[r][c] + value)  + " ");    
+                            ps.println(String.valueOf(green[r][c] + value)  + " ");    
                         else
-                            ps.print(String.valueOf(255)  + " ");
+                            ps.println(String.valueOf(255)  + " ");
+                        
+                        ps.println(String.valueOf(blue[r][c]));
                     }
                     else {
+                        ps.println(String.valueOf(red[r][c]));
+                        ps.println(String.valueOf(green[r][c]));
+                        
                         if ( (blue[r][c] + value) < 255 )
-                            ps.print(String.valueOf(blue[r][c] + value)  + " ");    
+                            ps.println(String.valueOf(blue[r][c] + value)  + " ");    
                         else
-                            ps.print(String.valueOf(255)  + " ");
+                            ps.println(String.valueOf(255)  + " ");
                     }
                     
             ps.close();
