@@ -29,7 +29,7 @@ public class PpmImage {
     }
     
      public void convertToDarken(int value, String type) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-1/darkenImage" + type + ".pgm");
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/darkenImage" + type + ".pgm");
             
             ps.println("P3");
             ps.println("#Darken " + type);
@@ -62,8 +62,8 @@ public class PpmImage {
         }
      
      // Image to Lighten by add Value
-        public void convertToLightenByAddValue(int value) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/ligthenImageByAddValue.pgm");
+        public void convertToLightenByAddValue(int value, String type) throws IOException {
+            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/ligthenImage + " + type + ".pgm");
             
             ps.println("P2");
             ps.println("#Lighten By Add value");
@@ -72,10 +72,24 @@ public class PpmImage {
             
             for( int r = 0; r < rows; r++ )
                 for ( int c = 0; c < cols; c++ )
-                    if ( pixels[r][c] + value < 255 )
-                        ps.print(String.valueOf( pixels[r][c] + value ) + " ");
-                    else
-                        ps.print("255 ");
+                    if ( type.equalsIgnoreCase("R") ) {
+                        if ( (red[r][c] + value) < 255 )
+                            ps.print(String.valueOf(red[r][c] + value)  + " ");    
+                        else
+                            ps.print(String.valueOf(255)  + " ");
+                    }
+                    else if ( type.equalsIgnoreCase("G") ) {
+                        if ( (green[r][c] + value) < 255 )
+                            ps.print(String.valueOf(green[r][c] + value)  + " ");    
+                        else
+                            ps.print(String.valueOf(255)  + " ");
+                    }
+                    else {
+                        if ( (blue[r][c] + value) < 255 )
+                            ps.print(String.valueOf(blue[r][c] + value)  + " ");    
+                        else
+                            ps.print(String.valueOf(255)  + " ");
+                    }
                     
             ps.close();
         }
