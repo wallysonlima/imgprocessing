@@ -65,6 +65,11 @@ public class IUMain extends javax.swing.JFrame {
         menuItemLaplace8.setEnabled(false);
         menuItemLightColored.setEnabled(false);
         menuItemDarkenColored.setEnabled(false);
+        menuItemMixbgr.setEnabled(false);
+        menuItemMixbrg.setEnabled(false);
+        menuItemMixgbr.setEnabled(false);
+        menuItemMixgrb.setEnabled(false);
+        menuItemMixrbg.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -106,6 +111,11 @@ public class IUMain extends javax.swing.JFrame {
     public void menuEnablePpm() {
         menuItemLightColored.setEnabled(true);
         menuItemDarkenColored.setEnabled(true);
+        menuItemMixbgr.setEnabled(true);
+        menuItemMixbrg.setEnabled(true);
+        menuItemMixgbr.setEnabled(true);
+        menuItemMixgrb.setEnabled(true);
+        menuItemMixrbg.setEnabled(true);
     }
 
     /**
@@ -881,23 +891,58 @@ public class IUMain extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemLightColoredActionPerformed
 
     private void menuItemMixgbrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMixgbrActionPerformed
-        String option = "GB";
+        String option = "GBR";
+        
+        try {
+            pimg.mixColors(option);
+            JOptionPane.showMessageDialog(null, "A imagem foi mixada com sucesso ! (" + option+ ")\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }     
     }//GEN-LAST:event_menuItemMixgbrActionPerformed
 
     private void menuItemMixrbgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMixrbgActionPerformed
-       String option = "RB";
+       String option = "RBG";
+       
+       try {
+            pimg.mixColors(option);
+            JOptionPane.showMessageDialog(null, "A imagem foi mixada com sucesso ! (" + option+ ")\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }     
     }//GEN-LAST:event_menuItemMixrbgActionPerformed
 
     private void menuItemMixgrbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMixgrbActionPerformed
-       String option = "GR";
+       String option = "GRB";
+       
+       try {
+            pimg.mixColors(option);
+            JOptionPane.showMessageDialog(null, "A imagem foi mixada com sucesso ! (" + option+ ")\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }     
     }//GEN-LAST:event_menuItemMixgrbActionPerformed
 
     private void menuItemMixbrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMixbrgActionPerformed
-       String option = "BR";
+       String option = "BRG";
+       
+       try {
+            pimg.mixColors(option);
+            JOptionPane.showMessageDialog(null, "A imagem foi mixada com sucesso ! (" + option+ ")\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }     
     }//GEN-LAST:event_menuItemMixbrgActionPerformed
 
     private void menuItemMixbgrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMixbgrActionPerformed
-        String option = "BG";
+        String option = "BGR";
+        
+        try {
+            pimg.mixColors(option);
+            JOptionPane.showMessageDialog(null, "A imagem foi mixada com sucesso ! (" + option+ ")\n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }     
     }//GEN-LAST:event_menuItemMixbgrActionPerformed
     
     /**

@@ -116,6 +116,39 @@ public class PpmImage {
         ps.close();
     }
     
+    public void mixColors(String option) throws IOException {
+        PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/mixColor(" + option + ").ppm");
+
+        ps.println("P3");
+        ps.println("#Mix Color");
+        ps.println(cols + " " + rows);
+        ps.println(maxValue);
+        
+        for( int r = 0; r < rows; r++)
+            for( int c = 0; c < cols; c++)
+                if ( option.equalsIgnoreCase("RBG") ) {
+                    ps.println(String.valueOf(red[r][c]));
+                    ps.println(String.valueOf(blue[r][c]));
+                    ps.println(String.valueOf(green[r][c]));
+                } else if ( option.equalsIgnoreCase("GRB") ) {
+                    ps.println(String.valueOf(green[r][c]));
+                    ps.println(String.valueOf(red[r][c]));
+                    ps.println(String.valueOf(blue[r][c]));
+                } else if ( option.equalsIgnoreCase("GBR") ) {
+                    ps.println(String.valueOf(green[r][c]));
+                    ps.println(String.valueOf(blue[r][c]));
+                    ps.println(String.valueOf(red[r][c]));
+                } else if ( option.equalsIgnoreCase("BRG") ){
+                    ps.println(String.valueOf(blue[r][c]));
+                    ps.println(String.valueOf(red[r][c]));
+                    ps.println(String.valueOf(green[r][c]));
+                } else {
+                    ps.println(String.valueOf(blue[r][c]));
+                    ps.println(String.valueOf(green[r][c]));
+                    ps.println(String.valueOf(red[r][c]));
+                }
+    }
+    
     // load gray scale pixel values from a PPM format image
     public void readPPM(String filename){
             try {                        		    
