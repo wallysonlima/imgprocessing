@@ -116,6 +116,7 @@ public class PpmImage {
         ps.close();
     }
     
+    // Alter colors, mix RGB
     public void mixColors(String option) throws IOException {
         PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/mixColor(" + option + ").ppm");
 
@@ -147,6 +148,27 @@ public class PpmImage {
                     ps.println(String.valueOf(green[r][c]));
                     ps.println(String.valueOf(red[r][c]));
                 }
+        
+        ps.close();
+    }
+    
+    // Change RGB to CMY format
+    public void converto2Cmy() throws IOException {
+       PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-10/colorCMY.ppm");
+
+       ps.println("P3");
+       ps.println("#CMY Color format");
+       ps.println(cols + " " + rows);
+       ps.println(maxValue);
+       
+       for(int r = 0; r < rows; r++)
+           for(int c = 0; c < cols; c++) {
+                ps.println(String.valueOf(255 - red[r][c]));
+                ps.println(String.valueOf(255 - green[r][c]));
+                ps.println(String.valueOf(255 - blue[r][c]));
+           }
+               
+       ps.close();
     }
     
     // load gray scale pixel values from a PPM format image

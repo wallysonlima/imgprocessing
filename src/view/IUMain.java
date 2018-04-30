@@ -70,6 +70,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemMixgbr.setEnabled(false);
         menuItemMixgrb.setEnabled(false);
         menuItemMixrbg.setEnabled(false);
+        menuItemCmy.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -116,6 +117,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemMixgbr.setEnabled(true);
         menuItemMixgrb.setEnabled(true);
         menuItemMixrbg.setEnabled(true);
+        menuItemCmy.setEnabled(true);
     }
 
     /**
@@ -130,6 +132,7 @@ public class IUMain extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuOpen = new javax.swing.JMenuItem();
+        menuItemCmy = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuNegative = new javax.swing.JMenuItem();
         menuDarkenI = new javax.swing.JMenuItem();
@@ -188,6 +191,14 @@ public class IUMain extends javax.swing.JFrame {
             }
         });
         jMenu1.add(menuOpen);
+
+        menuItemCmy.setText("Convert to CMY");
+        menuItemCmy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCmyActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuItemCmy);
 
         jMenuBar1.add(jMenu1);
 
@@ -944,6 +955,15 @@ public class IUMain extends javax.swing.JFrame {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }     
     }//GEN-LAST:event_menuItemMixbgrActionPerformed
+
+    private void menuItemCmyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCmyActionPerformed
+        try {
+            pimg.converto2Cmy();
+            JOptionPane.showMessageDialog(null, "A imagem foi salva no formato CMY ! \n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemCmyActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1000,6 +1020,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenu menuItem;
     private javax.swing.JMenuItem menuItem16;
     private javax.swing.JMenuItem menuItemAdd;
+    private javax.swing.JMenuItem menuItemCmy;
     private javax.swing.JMenuItem menuItemDarkenColored;
     private javax.swing.JMenuItem menuItemGeneric;
     private javax.swing.JMenuItem menuItemHighLight1;
