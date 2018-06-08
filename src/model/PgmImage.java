@@ -721,8 +721,10 @@ public class PgmImage extends Component {
                     
                     for( int r = ini; r < dim + ini; r++)
                         for( int c = ini; c < dim + ini; c++ )
-                            if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length )
-                                values.add(pixels[i + r][j + c]);
+                            if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length ) {
+                                 values = new ArrayList<>();
+                                 values.add(pixels[i + r][j + c]);
+                            }    
                     
                     ps.print(String.valueOf(getMedian(values)) + " ");
                 }
@@ -733,7 +735,6 @@ public class PgmImage extends Component {
         public Integer getMedian(ArrayList<Integer> values) {
             Collections.sort(values);
             int middle = values.size() / 2;
-            middle = middle % 2 == 0? middle - 1 : middle;
             return values.get(middle);
         }
         

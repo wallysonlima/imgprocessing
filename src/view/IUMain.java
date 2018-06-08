@@ -72,6 +72,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemMixrbg.setEnabled(false);
         menuItemCmy.setEnabled(false);
         menuItemMedian.setEnabled(false);
+        menuItemExtract.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -119,6 +120,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemMixgbr.setEnabled(true);
         menuItemMixgrb.setEnabled(true);
         menuItemMixrbg.setEnabled(true);
+        menuItemExtract.setEnabled(true);
         menuItemCmy.setEnabled(true);
     }
 
@@ -135,6 +137,7 @@ public class IUMain extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         menuOpen = new javax.swing.JMenuItem();
         menuItemCmy = new javax.swing.JMenuItem();
+        menuItemExtract = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuNegative = new javax.swing.JMenuItem();
         menuDarkenI = new javax.swing.JMenuItem();
@@ -202,6 +205,14 @@ public class IUMain extends javax.swing.JFrame {
             }
         });
         jMenu1.add(menuItemCmy);
+
+        menuItemExtract.setText("Extract colored Images");
+        menuItemExtract.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemExtractActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuItemExtract);
 
         jMenuBar1.add(jMenu1);
 
@@ -985,6 +996,15 @@ public class IUMain extends javax.swing.JFrame {
              Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_menuItemMedianActionPerformed
+
+    private void menuItemExtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExtractActionPerformed
+         try {
+            pimg.extractChanells();
+            JOptionPane.showMessageDialog(null, "A imagem foi extraida os canais com sucesso ! \n");
+        } catch (IOException ex) {
+            Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemExtractActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1043,6 +1063,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemAdd;
     private javax.swing.JMenuItem menuItemCmy;
     private javax.swing.JMenuItem menuItemDarkenColored;
+    private javax.swing.JMenuItem menuItemExtract;
     private javax.swing.JMenuItem menuItemGeneric;
     private javax.swing.JMenuItem menuItemHighLight1;
     private javax.swing.JMenuItem menuItemHighLight2;

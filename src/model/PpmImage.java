@@ -171,6 +171,38 @@ public class PpmImage {
        ps.close();
     }
     
+    public void extractChanells() throws IOException {
+       PrintStream rd = new PrintStream("../red.pgm");
+       PrintStream gr = new PrintStream("../green.pgm");
+       PrintStream bl = new PrintStream("../blue.pgm");
+
+       rd.println("P2");
+       rd.println("#RED Color format");
+       rd.println(cols + " " + rows);
+       rd.println(maxValue);
+       
+       gr.println("P2");
+       gr.println("#GREEN Color format");
+       gr.println(cols + " " + rows);
+       gr.println(maxValue);
+       
+       bl.println("P2");
+       bl.println("#BLUE Color format");
+       bl.println(cols + " " + rows);
+       bl.println(maxValue);
+       
+       for(int r = 0; r < rows; r++)
+           for(int c = 0; c < cols; c++) {
+                rd.println(String.valueOf(red[r][c]));
+                gr.println(String.valueOf(green[r][c]));
+                bl.println(String.valueOf(blue[r][c]));
+           }
+               
+       rd.close();
+       gr.close();
+       bl.close();
+    }
+    
     // load gray scale pixel values from a PPM format image
     public void readPPM(String filename){
             try {                        		    
