@@ -15,6 +15,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -696,6 +699,42 @@ public class PgmImage extends Component {
                 }
             
             ps.close();
+        }
+        
+          public void spacialMedian(int dim) throws IOException {
+            PrintStream ps = new PrintStream("../medianFilter" + dim + "x" + dim + ".pgm");
+            int size = dim * dim;
+            ArrayList<Integer> values = new ArrayList<>();
+            float sum;
+            int ini;
+            int temp;
+            
+            ps.println("P2");
+            ps.println("#Median Filter");
+            ps.println(cols + " " + rows);
+            ps.println(maxValue);
+            
+            for( int i = 0; i < pixels.length; i++ )
+                for( int j = 0; j < pixels[0].length; j++ ) {
+                    ini = -(dim/2);
+                    sum = 0;
+                    
+                    for( int r = ini; r < dim + ini; r++)
+                        for( int c = ini; c < dim + ini; c++ )
+                            if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length )
+                                values.add(pixels[i + r][j + c]);
+                    
+                    ps.print(String.valueOf(getMedian(values)) + " ");
+                }
+           
+            ps.close();
+        }
+          
+        public Integer getMedian(ArrayList<Integer> values) {
+            Collections.sort(values);
+            int middle = values.size() / 2;
+            middle = middle % 2 == 0? middle - 1 : middle;
+            return values.get(middle);
         }
         
 	// default constructor with a 3 by 4 image

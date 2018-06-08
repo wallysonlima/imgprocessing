@@ -71,6 +71,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemMixgrb.setEnabled(false);
         menuItemMixrbg.setEnabled(false);
         menuItemCmy.setEnabled(false);
+        menuItemMedian.setEnabled(false);
         _16.setEnabled(false);
         _8.setEnabled(false);
         _4.setEnabled(false);
@@ -103,6 +104,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItem16.setEnabled(true);
         menuItemLaplace4.setEnabled(true);
         menuItemLaplace8.setEnabled(true);
+        menuItemMedian.setEnabled(true);
         _16.setEnabled(true);
         _8.setEnabled(true);
         _4.setEnabled(true);
@@ -179,6 +181,7 @@ public class IUMain extends javax.swing.JFrame {
         menuItemGeneric = new javax.swing.JMenuItem();
         menuItemLaplace4 = new javax.swing.JMenuItem();
         menuItemLaplace8 = new javax.swing.JMenuItem();
+        menuItemMedian = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -533,6 +536,14 @@ public class IUMain extends javax.swing.JFrame {
             }
         });
         jMenu6.add(menuItemLaplace8);
+
+        menuItemMedian.setText("Median");
+        menuItemMedian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemMedianActionPerformed(evt);
+            }
+        });
+        jMenu6.add(menuItemMedian);
 
         jMenuBar1.add(jMenu6);
 
@@ -964,6 +975,16 @@ public class IUMain extends javax.swing.JFrame {
             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuItemCmyActionPerformed
+
+    private void menuItemMedianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMedianActionPerformed
+         try {
+             int dim = Integer.parseInt(JOptionPane.showInputDialog("Digite a dimensão do filtro !\n"));
+             img.spacialMedian(dim);
+             JOptionPane.showMessageDialog(null, "A imagem foi filtrada com sucesso !\n");
+         } catch (IOException ex) {
+             Logger.getLogger(IUMain.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_menuItemMedianActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1031,6 +1052,7 @@ public class IUMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemLeft;
     private javax.swing.JMenuItem menuItemLightColored;
     private javax.swing.JMenuItem menuItemLocalEq;
+    private javax.swing.JMenuItem menuItemMedian;
     private javax.swing.JMenuItem menuItemMixbgr;
     private javax.swing.JMenuItem menuItemMixbrg;
     private javax.swing.JMenuItem menuItemMixgbr;
