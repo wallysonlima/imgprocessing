@@ -30,7 +30,7 @@ public class PpmImage {
     
     // Dark the colored image, only the Canal R or G or B.
     public void convertToDarken(int value, String type) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/darkenImage" + type + ".ppm");
+            PrintStream ps = new PrintStream("../darkenImage" + type + ".ppm");
             
             ps.println("P3");
             ps.println("#Darken " + type);
@@ -75,7 +75,7 @@ public class PpmImage {
      
     // Lighten the colored image, only the Canal R or G or B.
     public void convertToLighten(int value, String type) throws IOException {
-        PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/ligthenImage" + type + ".ppm");
+        PrintStream ps = new PrintStream("../ligthenImage" + type + ".ppm");
 
         ps.println("P3");
         ps.println("#Lighten By Add value");
@@ -118,7 +118,7 @@ public class PpmImage {
     
     // Alter colors, mix RGB
     public void mixColors(String option) throws IOException {
-        PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-9/mixColor(" + option + ").ppm");
+        PrintStream ps = new PrintStream("../mixColor(" + option + ").ppm");
 
         ps.println("P3");
         ps.println("#Mix Color");
@@ -154,7 +154,7 @@ public class PpmImage {
     
     // Change RGB to CMY format
     public void converto2Cmy() throws IOException {
-       PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-10/colorCMY.ppm");
+       PrintStream ps = new PrintStream("../colorCMY.ppm");
 
        ps.println("P3");
        ps.println("#CMY Color format");

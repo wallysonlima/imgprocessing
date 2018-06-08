@@ -50,7 +50,7 @@ public class PgmImage extends Component {
          
         //Convert To Negative
         public void convertToNegative() throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-07-03/negativeImage.pgm");
+            PrintStream ps = new PrintStream("../negativeImage.pgm");
             
             ps.println("P2");
             ps.println("#Negative");
@@ -66,7 +66,7 @@ public class PgmImage extends Component {
         
         //Image To Darken I
         public void convertToDarkenI(int value) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-1/darkenImageI.pgm");
+            PrintStream ps = new PrintStream("../darkenImageI.pgm");
             
             ps.println("P2");
             ps.println("#Darken I");
@@ -85,7 +85,7 @@ public class PgmImage extends Component {
         
          //Image To Darken I
         public void convertToDarkenII(int value) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-1/darkenImageII.pgm");
+            PrintStream ps = new PrintStream("../darkenImageII.pgm");
             
             ps.println("P2");
              ps.println("#Darken II");
@@ -102,7 +102,7 @@ public class PgmImage extends Component {
         
         // Image to Lighten by add Value
         public void convertToLightenByAddValue(int value) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-1/ligthenImageByAddValue.pgm");
+            PrintStream ps = new PrintStream("../ligthenImageByAddValue.pgm");
             
             ps.println("P2");
             ps.println("#Lighten By Add value");
@@ -121,7 +121,7 @@ public class PgmImage extends Component {
         
         // Image to Lighten by multiplicate value
         public void convertToLightenByMultValue(int value) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-1/ligthenImageByMultValue.pgm");
+            PrintStream ps = new PrintStream("../ligthenImageByMultValue.pgm");
             
             ps.println("P2");
             ps.println("#Lighten By Mult");
@@ -173,7 +173,7 @@ public class PgmImage extends Component {
         
          // Rotate image right (90º)
         public void rotateRight()  throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-2/rotateRight.pgm");
+            PrintStream ps = new PrintStream("../rotateRight.pgm");
             
             int[][] temp = getTranspose(pixels);
             int[][] matrix = horizontalFlip(temp);
@@ -193,7 +193,7 @@ public class PgmImage extends Component {
         // Rotate image left (-90º)
         public void rotateLeft()  throws IOException {
             int[][] aux = new int[rows][cols];
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-2/rotateLeft.pgm");
+            PrintStream ps = new PrintStream("../rotateLeft.pgm");
             
             int[][] temp = getTranspose(pixels);
             int[][] matrix = verticalFlip(temp);
@@ -212,7 +212,7 @@ public class PgmImage extends Component {
         
         // Rotate image horizontal (180º)
         public void rotateHorizontal()  throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-2/rotateHorizontal.pgm");
+            PrintStream ps = new PrintStream("../rotateHorizontal.pgm");
             
             int[][] matrix = horizontalFlip(pixels);
             //int[][] matrix = verticalFlip(temp);
@@ -231,7 +231,7 @@ public class PgmImage extends Component {
         
         // Rotate image vertical (180º)
         public void rotateVertical()  throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-2/rotateVertical.pgm");
+            PrintStream ps = new PrintStream("../rotateVertical.pgm");
             
             int[][] matrix = verticalFlip(pixels);
             
@@ -249,7 +249,7 @@ public class PgmImage extends Component {
         
         // Binarization the image
         public void binarization(int value) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-2/binarization.pgm");
+            PrintStream ps = new PrintStream("../binarization.pgm");
             
             ps.println("P2");
             ps.println("#Binary");
@@ -268,7 +268,7 @@ public class PgmImage extends Component {
         
         // Reduction the image of 16, 8, 4, 2
         public void reduction(int value) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-2/reduction" + value + ".pgm");
+            PrintStream ps = new PrintStream("../reduction" + value + ".pgm");
             
             ps.println("P2");
             ps.println("#Reduction");
@@ -284,7 +284,7 @@ public class PgmImage extends Component {
         
         // Highlights transformation range A and B and reduces all other intensities to a lower level
         public void highlightsTransformation(int a, int b, int gLevel1, int gLevel2) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-3/highlight1.pgm");
+            PrintStream ps = new PrintStream("../highlight1.pgm");
             
             ps.println("P2");
             ps.println("#Highlights Transformation");
@@ -303,7 +303,7 @@ public class PgmImage extends Component {
         
         // Highlights transformation up values between A and B 
         public void highlightsTransformation2(int a, int b, int greyLevel) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-3/highlight2.pgm");
+            PrintStream ps = new PrintStream("../highlight2.pgm");
             
             ps.println("P2");
             ps.println("#Highlights Transformation 2");
@@ -321,7 +321,7 @@ public class PgmImage extends Component {
         } 
         
         public void subtraction1(int a, int b, int glevel1, int glevel2) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-3/subtraction.pgm");
+            PrintStream ps = new PrintStream("../subtraction.pgm");
             int[][] matrix = new int[rows][cols];
             
             ps.println("P2");
@@ -350,7 +350,7 @@ public class PgmImage extends Component {
         }
         
         public void subtraction2(int a, int b, int greyLevel) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-3/subtraction2.pgm");
+            PrintStream ps = new PrintStream("../subtraction2.pgm");
             int[][] matrix = new int[rows][cols];
             
             ps.println("P2");
@@ -381,7 +381,7 @@ public class PgmImage extends Component {
          //Transform Image by Power
         public void transformPower(float power) throws IOException {
             int p = Math.round(power * 10);
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-4/transformPower" + p + ".pgm");
+            PrintStream ps = new PrintStream("../transformPower" + p + ".pgm");
             float temp = 0.0f;
             int value = 0;
             
@@ -404,7 +404,7 @@ public class PgmImage extends Component {
         
         // Zoom-in the image
         public void zoomIn(int n) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-5/zoomIn" + n + ".pgm");
+            PrintStream ps = new PrintStream("../zoomIn" + n + ".pgm");
             int h = n * img.getHeight();
             int w = n * img.getWidth();
             int[][] matrix = new int[h][w];
@@ -423,7 +423,7 @@ public class PgmImage extends Component {
         
         // Zoom-out the image
         public void zoomOut(int n) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-5/zoomOut" + n + ".pgm");
+            PrintStream ps = new PrintStream("../zoomOut" + n + ".pgm");
             int h = pixels.length / n;
             int w = pixels[0].length / n;
             int size = pixels.length * n;
@@ -461,7 +461,7 @@ public class PgmImage extends Component {
         
         // Save qtde pixels in with grey level Histogram in a vector
         public void saveHistogram() throws IOException {
-             PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-5/Histogram.txt");
+             PrintStream ps = new PrintStream("../Histogram.txt");
              final int MAX = 256; 
              int[] histogram = new int[MAX];
              
@@ -475,7 +475,7 @@ public class PgmImage extends Component {
         
         // Equalize histogram image using local Equalization
         public void localEqualization() throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-8/localEqualizationImage.pgm");
+            PrintStream ps = new PrintStream("../localEqualizationImage.pgm");
             final int L = 256;
             int[] histogram = new int[L];
             int[] acumulative = new int[L];
@@ -504,7 +504,7 @@ public class PgmImage extends Component {
         }
         
         public void statisticalEqualization() throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-8/statisticalEqualizationImage.pgm");
+            PrintStream ps = new PrintStream("../statisticalEqualizationImage.pgm");
             final int L = 256;
             int[] histogram = new int[L];
             int[] position = new int[L];
@@ -543,7 +543,7 @@ public class PgmImage extends Component {
         
         // Spacial filter using Generic nxn filter
         public void spacialFilter(int dim) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-6/spacialfilter" + dim + "x" + dim + ".pgm");
+            PrintStream ps = new PrintStream("../spacialfilter" + dim + "x" + dim + ".pgm");
             int size = dim * dim;
             float sum;
             int ini;
@@ -574,7 +574,7 @@ public class PgmImage extends Component {
         }
         
         public void spacialFilter16(int dim) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-6/spacialfilter16-" + dim + "x" + dim + ".pgm");
+            PrintStream ps = new PrintStream("../spacialfilter16-" + dim + "x" + dim + ".pgm");
             int size = 16;
             int[][] filter = {{1,2,1}, {2,4,2}, {1,2,1}};
             float sum;
@@ -607,7 +607,7 @@ public class PgmImage extends Component {
         
         // Filter laplace mask 4
         public void laplaceFilter4(int dim) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-7/laplaceFilter4.pgm");
+            PrintStream ps = new PrintStream("../laplaceFilter4.pgm");
             int[][] filter = {{0,-1,0}, {-1,4,-1}, {0,-1,0}};
             int [][] laplace = new int[pixels.length][pixels[0].length];
             int sum;
@@ -653,7 +653,7 @@ public class PgmImage extends Component {
         }
         
         public void laplaceFilter8(int dim) throws IOException {
-            PrintStream ps = new PrintStream("/home/wlima/Documents/PDI/aula-7/laplaceFilter8.pgm");
+            PrintStream ps = new PrintStream("../laplaceFilter8.pgm");
             int[][] filter = {{-1,-1,-1}, {-1,8,-1}, {-1,-1,-1}};
             int [][] laplace = new int[pixels.length][pixels[0].length];
             int sum;
