@@ -197,6 +197,14 @@ public class PpmImage {
                 gr.println(String.valueOf(green[r][c]));
                 bl.println(String.valueOf(blue[r][c]));
            }
+       
+       System.out.println("Método da Extração: \n"
+               + "  for(int r = 0; r < rows; r++)\n" +
+"           for(int c = 0; c < cols; c++) {\n" +
+"                rd.println(String.valueOf(red[r][c]));\n" +
+"                gr.println(String.valueOf(green[r][c]));\n" +
+"                bl.println(String.valueOf(blue[r][c]));\n" +
+"           }");
                
        rd.close();
        gr.close();

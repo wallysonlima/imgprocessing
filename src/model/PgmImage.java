@@ -503,6 +503,21 @@ public class PgmImage extends Component {
                 for( int j = 0; j < pixels[0].length; j++ )
                     ps.print(String.valueOf(acumulative[pixels[i][j]]) + " ");
             
+            System.out.println("Código do Métod do histograma local:\n"
+                    + " getHistogram(histogram);\n" +
+"            \n" +
+"            // Acumulate the histogram and create lookup\n" +
+"            for( int i = 0; i < L; i++) {\n" +
+"                sum += histogram[i];\n" +
+"                acumulative[i] = sum * (L-1) / size;\n" +
+"            }\n" +
+"            \n" +
+"            // Change befores values to new values\n" +
+"            for( int i = 0; i < pixels.length; i++)\n" +
+"                for( int j = 0; j < pixels[0].length; j++ )\n" +
+"                    ps.print(String.valueOf(acumulative[pixels[i][j]]) + \" \");");
+           
+            
              ps.close();
         }
         
@@ -541,6 +556,26 @@ public class PgmImage extends Component {
                 for( int j = 0; j < pixels[0].length; j++ )
                     ps.print(String.valueOf(result[pixels[i][j]]) + " ");
             
+            System.out.println("Método da equalização do histogram:\n"
+                    + " getHistogram(histogram);\n" +
+"            \n" +
+"            // Acumulate the histogram and create lookup\n" +
+"            for( int i = 0; i < L; i++) {\n" +
+"                sumSt += histogram[i] / (float) size;\n" +
+"                position[i] = Math.round(sumSt * (L-1));\n" +
+"                \n" +
+"                sum += histogram[i];\n" +
+"                acumulative[i] = sum * (L-1) / size;\n" +
+"            }\n" +
+"            \n" +
+"            for( int i = 0; i < L; i++)\n" +
+"                result[i] = acumulative[position[i]];\n" +
+"            \n" +
+"            // Change befores values to new values\n" +
+"            for( int i = 0; i < pixels.length; i++)\n" +
+"                for( int j = 0; j < pixels[0].length; j++ )\n" +
+"                    ps.print(String.valueOf(result[pixels[i][j]]) + \" \");");
+            
             ps.close();
         }
         
@@ -572,6 +607,23 @@ public class PgmImage extends Component {
                     
                     ps.print(String.valueOf(temp) + " ");
                 }
+            
+            System.out.println("Método do Filtro Espacial:\n"
+                    + "for( int i = 0; i < pixels.length; i++ )\n" +
+"                for( int j = 0; j < pixels[0].length; j++ ) {\n" +
+"                    ini = -(dim/2);\n" +
+"                    sum = 0;\n" +
+"                    \n" +
+"                    for( int r = ini; r < dim + ini; r++)\n" +
+"                        for( int c = ini; c < dim + ini; c++ )\n" +
+"                            if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length )\n" +
+"                                sum += pixels[i + r][j + c];\n" +
+"                    \n" +
+"                    if ( (temp = Math.round(sum / (float) size)) > 255 )\n" +
+"                        temp = 255;\n" +
+"                    \n" +
+"                    ps.print(String.valueOf(temp) + \" \");\n" +
+"                }");
            
             ps.close();
         }
@@ -604,6 +656,23 @@ public class PgmImage extends Component {
                     
                     ps.print(String.valueOf(temp) + " ");
                 }
+            
+            System.out.println("Método do Filtro: \n"
+                    + "for( int i = 0; i < pixels.length; i++)\n" +
+"                for( int j = 0; j < pixels[0].length; j++ ) {\n" +
+"                    ini = -1;\n" +
+"                    sum = 0;\n" +
+"                    \n" +
+"                    for( int r = ini; r < dim + ini; r++)\n" +
+"                        for( int c = ini; c < dim + ini; c++ )\n" +
+"                            if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length )\n" +
+"                                sum += pixels[i + r][j + c] * filter[r+1][c+1];\n" +
+"                    \n" +
+"                    if ( (temp = Math.round(sum / (float) size)) > 255 )\n" +
+"                        temp = 255;\n" +
+"                    \n" +
+"                    ps.print(String.valueOf(temp) + \" \");\n" +
+"                }");
            
             ps.close();
         }
@@ -652,6 +721,37 @@ public class PgmImage extends Component {
                     ps.print(String.valueOf(temp) + " ");
                 }
             
+            System.out.println("Método do Laplace: \n"
+                    + "for( int i = 0; i < pixels.length; i++)\n" +
+"                for( int j = 0; j < pixels[0].length; j++ ) {\n" +
+"                    ini = -1;\n" +
+"                    sum = 0;\n" +
+"                    \n" +
+"                    for( int r = ini; r < dim + ini; r++)\n" +
+"                        for( int c = ini; c < dim + ini; c++ )\n" +
+"                            if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length )\n" +
+"                                sum += pixels[i + r][j + c] * filter[r+1][c+1];\n" +
+"                    \n" +
+"                    if ( sum >= 0 && sum <= 255 )\n" +
+"                        laplace[i][j] = sum;                        \n" +
+"                    else if ( sum > 255 )\n" +
+"                        laplace[i][j] = 255;\n" +
+"                    else if ( sum < 0 )\n" +
+"                        laplace[i][j] = 0;\n" +
+"                }\n" +
+"            \n" +
+"            for( int i = 0; i < pixels.length; i++)\n" +
+"                for( int j = 0; j < pixels[0].length; j++ ) {\n" +
+"                    temp = pixels[i][j] + laplace[i][j];\n" +
+"                    \n" +
+"                    if ( temp > 255 )\n" +
+"                        temp = 255;\n" +
+"                    else if ( temp < 0 )\n" +
+"                        temp = 0;\n" +
+"                    \n" +
+"                    ps.print(String.valueOf(temp) + \" \");\n" +
+"                }");
+            
             ps.close();
         }
         
@@ -698,6 +798,37 @@ public class PgmImage extends Component {
                     ps.print(String.valueOf(temp) + " ");
                 }
             
+            System.out.println("Método do Laplace: \n"
+                    + "for( int i = 0; i < pixels.length; i++)\n" +
+"                for( int j = 0; j < pixels[0].length; j++ ) {\n" +
+"                    ini = -1;\n" +
+"                    sum = 0;\n" +
+"                    \n" +
+"                    for( int r = ini; r < dim + ini; r++)\n" +
+"                        for( int c = ini; c < dim + ini; c++ )\n" +
+"                            if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length )\n" +
+"                                sum += pixels[i + r][j + c] * filter[r+1][c+1];\n" +
+"                    \n" +
+"                    if ( sum >= 0 && sum <= 255 )\n" +
+"                        laplace[i][j] = sum;                        \n" +
+"                    else if ( sum > 255 )\n" +
+"                        laplace[i][j] = 255;\n" +
+"                    else if ( sum < 0 )\n" +
+"                        laplace[i][j] = 0;\n" +
+"                }\n" +
+"            \n" +
+"            for( int i = 0; i < pixels.length; i++)\n" +
+"                for( int j = 0; j < pixels[0].length; j++ ) {\n" +
+"                    temp = pixels[i][j] + laplace[i][j];\n" +
+"                    \n" +
+"                    if ( temp > 255 )\n" +
+"                        temp = 255;\n" +
+"                    else if ( temp < 0 )\n" +
+"                        temp = 0;\n" +
+"                    \n" +
+"                    ps.print(String.valueOf(temp) + \" \");\n" +
+"                }");
+            
             ps.close();
         }
         
@@ -729,6 +860,42 @@ public class PgmImage extends Component {
                     ps.print(String.valueOf(getMedian(values)) + " ");
                 }
            
+            System.out.println("Método da Mediana:\n"
+                    + "for( int i = 0; i < pixels.length; i++)\n" +
+"                for( int j = 0; j < pixels[0].length; j++ ) {\n" +
+"                    ini = -1;\n" +
+"                    sum = 0;\n" +
+"                    \n" +
+"                    for( int r = ini; r < dim + ini; r++)\n" +
+"                        for( int c = ini; c < dim + ini; c++ )\n" +
+"                            if ( (i + r) >= 0 && (j + c) >= 0 && (i + r) < pixels.length && (j + c) < pixels[0].length )\n" +
+"                                sum += pixels[i + r][j + c] * filter[r+1][c+1];\n" +
+"                    \n" +
+"                    if ( sum >= 0 && sum <= 255 )\n" +
+"                        laplace[i][j] = sum;                        \n" +
+"                    else if ( sum > 255 )\n" +
+"                        laplace[i][j] = 255;\n" +
+"                    else if ( sum < 0 )\n" +
+"                        laplace[i][j] = 0;\n" +
+"                }\n" +
+"            \n" +
+"            for( int i = 0; i < pixels.length; i++)\n" +
+"                for( int j = 0; j < pixels[0].length; j++ ) {\n" +
+"                    temp = pixels[i][j] + laplace[i][j];\n" +
+"                    \n" +
+"                    if ( temp > 255 )\n" +
+"                        temp = 255;\n" +
+"                    else if ( temp < 0 )\n" +
+"                        temp = 0;\n" +
+"                    \n" +
+"                    ps.print(String.valueOf(temp) + \" \");\n" +
+"                }\n\n"
+                    + " public Integer getMedian(ArrayList<Integer> values) {\n" +
+"            Collections.sort(values);\n" +
+"            int middle = values.size() / 2;\n" +
+"            return values.get(middle);\n" +
+"        }");
+            
             ps.close();
         }
           
